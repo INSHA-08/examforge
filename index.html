@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en" class="dark">
 <head>
@@ -87,10 +86,10 @@
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-900">
 
-    <!-- Toast Container -->
+    <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- MAIN HEADER -->
+    <!-- MAIN APP HEADER -->
     <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
             
@@ -130,7 +129,7 @@
                     <div>
                         <div class="text-xs font-medium text-slate-400">Chapters Revised</div>
                         <div class="text-sm font-bold text-white flex items-center gap-1.5">
-                            <span id="revisedCount" class="text-emerald-400">0</span> / <span id="totalCount">58</span>
+                            <span id="revisedCount" class="text-emerald-400">0</span> / <span id="totalCount">79</span>
                             <span class="text-[10px] text-slate-500 font-normal">(Full Syllabus)</span>
                         </div>
                     </div>
@@ -160,7 +159,7 @@
             <!-- Search Input -->
             <div class="relative flex-1 w-full">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search chapter title, formula, act, story, or topic..." class="w-full bg-slate-900/90 border border-slate-700/70 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-slate-200 placeholder-slate-500 rounded-xl pl-10 pr-10 py-2.5 text-xs sm:text-sm transition-all outline-none">
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search chapter title, formula, act, story, poem, or topic..." class="w-full bg-slate-900/90 border border-slate-700/70 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-slate-200 placeholder-slate-500 rounded-xl pl-10 pr-10 py-2.5 text-xs sm:text-sm transition-all outline-none">
                 <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs">
                     <i class="fa-solid fa-circle-xmark"></i>
                 </button>
@@ -179,7 +178,7 @@
 
                 <div class="relative flex-1 md:w-44">
                     <select id="sortFilter" onchange="filterChapters()" class="w-full bg-slate-900 border border-slate-700/70 text-slate-200 text-xs rounded-xl px-3 py-2.5 outline-none focus:border-emerald-500 transition-all appearance-none cursor-pointer truncate">
-                        <option value="default">Default Order</option>
+                        <option value="default">Default ISC Order</option>
                         <option value="title">Alphabetical (A-Z)</option>
                     </select>
                     <i class="fa-solid fa-arrow-down-short-wide absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
@@ -187,14 +186,14 @@
             </div>
         </div>
 
-        <!-- SUBJECT FILTER TABS (ALWAYS VISIBLE) -->
+        <!-- SUBJECT FILTER TABS (ALWAYS VISIBLE - ALL 9 SUBJECTS) -->
         <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar" id="subjectTabsContainer">
             <!-- Dynamically rendered via JS on load -->
         </div>
 
         <!-- Dynamic Chapter Counter Text -->
         <div class="mt-2 mb-4 flex items-center justify-between text-xs text-slate-400 px-1">
-            <span id="activeSubjectCountText" class="font-medium text-slate-300">Showing all 58 chapters</span>
+            <span id="activeSubjectCountText" class="font-medium text-slate-300">Showing all 79 chapters</span>
             <span class="hidden sm:flex items-center gap-1.5 text-slate-500"><i class="fa-solid fa-hand-pointer text-emerald-400"></i> Click any card to launch Study Hub</span>
         </div>
     </section>
@@ -222,12 +221,12 @@
     <footer class="glass-panel border-t border-slate-800 py-6 text-center text-xs text-slate-400 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center gap-2">
-                <span class="font-bold text-slate-200">ExamForge</span> &bull; <span>ISC Class 12 CISCE Board Prep</span>
+                <span class="font-bold text-slate-200">ExamForge</span> &bull; <span>ISC Class 12 Board Exam Preparation Hub</span>
             </div>
             <div class="flex items-center gap-4 text-slate-400">
                 <span class="flex items-center gap-1"><i class="fa-solid fa-shield-halved text-emerald-400"></i> 100% Offline Persistence</span>
                 <span>&bull;</span>
-                <span class="flex items-center gap-1"><i class="fa-solid fa-graduation-cap text-emerald-400"></i> CISCE Pattern Aligned</span>
+                <span class="flex items-center gap-1"><i class="fa-solid fa-graduation-cap text-emerald-400"></i> CISCE Board Pattern Aligned</span>
             </div>
         </div>
     </footer>
@@ -247,7 +246,7 @@
                     </span>
                     <div>
                         <h2 id="modalChapterTitle" class="text-lg sm:text-xl font-bold text-white tracking-tight">Chapter Title</h2>
-                        <p id="modalChapterSubtitle" class="text-xs text-slate-400 mt-0.5">ISC Class 12 Syllabus Overview</p>
+                        <p id="modalChapterSubtitle" class="text-xs text-slate-400 mt-0.5">ISC Class 12 Board Exam Mastery</p>
                     </div>
                 </div>
 
@@ -299,7 +298,7 @@
                             </div>
                             <div>
                                 <h4 class="text-sm font-bold text-white">2-Minute Exam Morning Revision Flow</h4>
-                                <p class="text-xs text-slate-400">Structured nodes, core formulas & critical points before entering the exam hall.</p>
+                                <p class="text-xs text-slate-400">Structured nodes, core formulas & critical points for fast exam hall recap.</p>
                             </div>
                         </div>
                     </div>
@@ -332,4 +331,909 @@
                             <i class="fa-solid fa-arrow-trend-up text-amber-400"></i> High-Probability Board Exam Questions
                         </span>
                         <button onclick="toggleAllSolutions('expected')" class="text-emerald-400 font-semibold hover:underline">
-         
+                            Toggle All Answers
+                        </button>
+                    </div>
+
+                    <div id="expectedQuestionsContainer" class="space-y-4">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+                <!-- TAB 4: PRACTICE QUIZ -->
+                <div id="tabContent-quiz" class="modal-pane hidden space-y-6">
+                    <div id="quizHeaderCard" class="bg-slate-850 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                        <div>
+                            <span id="quizProgressLabel" class="text-xs text-slate-400 font-medium">Question 0 of 15</span>
+                            <h4 id="quizScoreTracker" class="text-sm font-bold text-white mt-0.5">Score: <span class="text-emerald-400">0</span> / 15</h4>
+                        </div>
+                        <button onclick="restartChapterQuiz()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-all flex items-center gap-1.5">
+                            <i class="fa-solid fa-rotate"></i> Restart Quiz
+                        </button>
+                    </div>
+
+                    <div id="quizContainer" class="space-y-4">
+                        <!-- Rendered by JS -->
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ========================================== -->
+    <!--            APPLICATION JS SCRIPT           -->
+    <!-- ========================================== -->
+    <script>
+        // GLOBAL APP STATE (MUST BE INITIALIZED FIRST)
+        const appState = {
+            currentSubject: "All Subjects",
+            searchQuery: "",
+            statusFilter: "all",
+            sortFilter: "default",
+            revisedChapterIds: new Set(),
+            activeModalChapterId: null,
+            activeTab: "mindmap"
+        };
+
+        const SUBJECTS_CONFIG = {
+            "Physics": { icon: "fa-atom", badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
+            "Chemistry": { icon: "fa-flask-vial", badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" },
+            "Biology": { icon: "fa-dna", badgeColor: "bg-teal-500/10 text-teal-400 border-teal-500/20" },
+            "Mathematics": { icon: "fa-calculator", badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20" },
+            "Computer Science": { icon: "fa-code", badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
+            "Hindi": { icon: "fa-language", badgeColor: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
+            "English Language": { icon: "fa-pen-nib", badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20" },
+            "English Literature": { icon: "fa-book-open", badgeColor: "bg-rose-500/10 text-rose-400 border-rose-500/20" },
+            "Formula Sheet": { icon: "fa-square-root-variable", badgeColor: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20" }
+        };
+
+        // ALL EXACT 79 ISC CLASS 12 CHAPTERS DATASET
+        const CHAPTERS_DATA = [
+            // --- PHYSICS (13 CHAPTERS) ---
+            { id: "phy-01", subject: "Physics", code: "PHY-01", title: "Electric Charges and Fields", topics: ["Coulomb's Law", "Electric Field Lines", "Gauss's Theorem", "Electric Dipole"] },
+            { id: "phy-02", subject: "Physics", code: "PHY-02", title: "Electrostatic Potential and Capacitance", topics: ["Potential Difference", "Equipotential Surfaces", "Capacitors in Series/Parallel", "Dielectrics"] },
+            { id: "phy-03", subject: "Physics", code: "PHY-03", title: "Current Electricity", topics: ["Ohm's Law", "Drift Velocity", "Kirchhoff's Laws", "Wheatstone Bridge & Potentiometer"] },
+            { id: "phy-04", subject: "Physics", code: "PHY-04", title: "Moving Charges and Magnetism", topics: ["Biot-Savart Law", "Ampere's Circuital Law", "Cyclotron", "Galvanometer to Ammeter/Voltmeter"] },
+            { id: "phy-05", subject: "Physics", code: "PHY-05", title: "Magnetism and Matter", topics: ["Bar Magnet as Dipole", "Earth's Magnetic Elements", "Dia, Para and Ferromagnetic Substances"] },
+            { id: "phy-06", subject: "Physics", code: "PHY-06", title: "Electromagnetic Induction", topics: ["Faraday's Laws of EMI", "Lenz's Law & Conservation", "Self & Mutual Inductance", "Eddy Currents"] },
+            { id: "phy-07", subject: "Physics", code: "PHY-07", title: "Alternating Current", topics: ["Peak & RMS Values", "LCR Series Circuit Resonance", "Power Factor", "Transformers"] },
+            { id: "phy-08", subject: "Physics", code: "PHY-08", title: "Electromagnetic Waves", topics: ["Displacement Current", "Maxwell's Equations", "EM Spectrum Characteristics & Uses"] },
+            { id: "phy-09", subject: "Physics", code: "PHY-09", title: "Ray Optics and Optical Instruments", topics: ["Refraction & Total Internal Reflection", "Lens Maker's Formula", "Prism Formula", "Microscopes & Telescopes"] },
+            { id: "phy-10", subject: "Physics", code: "PHY-10", title: "Wave Optics", topics: ["Huygens' Principle", "Young's Double Slit Experiment", "Diffraction at Single Slit", "Polarization"] },
+            { id: "phy-11", subject: "Physics", code: "PHY-11", title: "Atoms", topics: ["Rutherford's Alpha Scattering", "Bohr's Atomic Model", "Hydrogen Energy Spectrum Lines"] },
+            { id: "phy-12", subject: "Physics", code: "PHY-12", title: "Nuclei", topics: ["Nuclear Binding Energy Curve", "Mass Defect", "Nuclear Fission & Fusion Reactions"] },
+            { id: "phy-13", subject: "Physics", code: "PHY-13", title: "Semiconductor Electronics", topics: ["Intrinsic & Extrinsic Semiconductors", "p-n Junction Diode", "Rectifiers", "Zener Diode & LEDs"] },
+
+            // --- CHEMISTRY (10 CHAPTERS) ---
+            { id: "che-01", subject: "Chemistry", code: "CHE-01", title: "Solutions", topics: ["Raoult's Law", "Colligative Properties", "Osmotic Pressure", "Van't Hoff Factor"] },
+            { id: "che-02", subject: "Chemistry", code: "CHE-02", title: "Electrochemistry", topics: ["Nernst Equation", "Kohlrausch's Law", "Faraday's Laws", "Standard Hydrogen Electrode"] },
+            { id: "che-03", subject: "Chemistry", code: "CHE-03", title: "Chemical Kinetics", topics: ["Rate Law & Order", "Integrated Rate Equations", "Pseudo First Order", "Arrhenius Equation"] },
+            { id: "che-04", subject: "Chemistry", code: "CHE-04", title: "d- and f-Block Elements", topics: ["Transition Metal Properties", "Lanthanoid Contraction", "Potassium Permanganate & Dichromate"] },
+            { id: "che-05", subject: "Chemistry", code: "CHE-05", title: "Coordination Compounds", topics: ["Werner's Theory", "IUPAC Nomenclature", "Valence Bond Theory", "Crystal Field Theory"] },
+            { id: "che-06", subject: "Chemistry", code: "CHE-06", title: "Haloalkanes and Haloarenes", topics: ["SN1 vs SN2 Mechanisms", "Electrophilic Substitution in Haloarenes", "Grignard Reagents"] },
+            { id: "che-07", subject: "Chemistry", code: "CHE-07", title: "Alcohols, Phenols and Ethers", topics: ["Hydroboration-Oxidation", "Acidity of Phenols", "Reimer-Tiemann & Kolbe Reaction", "Williamson Synthesis"] },
+            { id: "che-08", subject: "Chemistry", code: "CHE-08", title: "Aldehydes, Ketones and Carboxylic Acids", topics: ["Nucleophilic Addition", "Aldol & Cannizzaro Reactions", "Tollens & Fehling Test", "HVZ Reaction"] },
+            { id: "che-09", subject: "Chemistry", code: "CHE-09", title: "Organic Compounds Containing Nitrogen", topics: ["Hoffmann Bromamide Degradation", "Gabriel Phthalimide Synthesis", "Diazonium Salt Reactions"] },
+            { id: "che-10", subject: "Chemistry", code: "CHE-10", title: "Biomolecules", topics: ["Glucose Ring Structure", "Peptide Bonds & Protein Structure", "DNA vs RNA Double Helix"] },
+
+            // --- BIOLOGY (10 CHAPTERS) ---
+            { id: "bio-01", subject: "Biology", code: "BIO-01", title: "Sexual Reproduction in Flowering Plants", topics: ["Microsporogenesis & Megasporogenesis", "Double Fertilization & Triple Fusion", "Apomixis & Polyembryony"] },
+            { id: "bio-02", subject: "Biology", code: "BIO-02", title: "Human Reproduction", topics: ["Spermatogenesis & Oogenesis", "Menstrual Cycle Hormones", "Implantation & Placenta Formation"] },
+            { id: "bio-03", subject: "Biology", code: "BIO-03", title: "Reproductive Health", topics: ["Contraceptive Techniques", "Infertility & ART (IVF, ZIFT, GIFT)", "Sexually Transmitted Diseases"] },
+            { id: "bio-04", subject: "Biology", code: "BIO-04", title: "Principles of Inheritance and Variation", topics: ["Mendel's Hybridization Laws", "Incomplete Dominance & Co-dominance", "Sex-Linked Genetic Disorders"] },
+            { id: "bio-05", subject: "Biology", code: "BIO-05", title: "Molecular Basis of Inheritance", topics: ["Structure of DNA & Replication", "Transcription Unit & Genetic Code", "Translation & Lac Operon"] },
+            { id: "bio-06", subject: "Biology", code: "BIO-06", title: "Evolution", topics: ["Origin of Life & Miller-Urey Experiment", "Adaptive Radiation & Homology", "Hardy-Weinberg Equilibrium"] },
+            { id: "bio-07", subject: "Biology", code: "BIO-07", title: "Human Health and Diseases", topics: ["Innate & Acquired Immunity", "Plasmodium Life Cycle", "Cancer & HIV Pathology"] },
+            { id: "bio-08", subject: "Biology", code: "BIO-08", title: "Microbes in Human Welfare", topics: ["Microbes in Household & Industrial Products", "Sewage Treatment Plant Steps", "Biocontrol & Biofertilizers"] },
+            { id: "bio-09", subject: "Biology", code: "BIO-09", title: "Biotechnology: Principles and Processes", topics: ["Restriction Endonucleases", "Recombinant DNA Vectors", "PCR Cycle & Gel Electrophoresis"] },
+            { id: "bio-10", subject: "Biology", code: "BIO-10", title: "Biotechnology and its Applications", topics: ["Bt Cotton & Cry Proteins", "RNA Interference (RNAi)", "Human Insulin & Gene Therapy"] },
+
+            // --- MATHEMATICS (11 CHAPTERS) ---
+            { id: "mat-01", subject: "Mathematics", code: "MAT-01", title: "Relations and Functions", topics: ["Reflexive, Symmetric & Transitive Relations", "One-One & Onto Functions", "Composite & Inverse Functions"] },
+            { id: "mat-02", subject: "Mathematics", code: "MAT-02", title: "Inverse Trigonometric Functions", topics: ["Principal Value Branches", "Domain & Range of Inverse Trig Functions", "Inverse Identities & Simplifications"] },
+            { id: "mat-03", subject: "Mathematics", code: "MAT-03", title: "Matrices", topics: ["Matrix Types & Operations", "Transpose & Symmetric/Skew-Symmetric", "Elementary Row Operations & Inverse Matrix"] },
+            { id: "mat-04", subject: "Mathematics", code: "MAT-04", title: "Determinants", topics: ["Properties of Determinants", "Minors, Cofactors & Adjoint", "Matrix Method for System of Linear Equations"] },
+            { id: "mat-05", subject: "Mathematics", code: "MAT-05", title: "Continuity and Differentiability", topics: ["Continuity at a Point", "Chain Rule & Implicit Differentiation", "Logarithmic & Parametric Differentiation", "Rolle's & Mean Value Theorems"] },
+            { id: "mat-06", subject: "Mathematics", code: "MAT-06", title: "Applications of Derivatives", topics: ["Rate of Change of Quantities", "Increasing & Decreasing Functions", "Tangents & Normals", "Maxima and Minima Word Problems"] },
+            { id: "mat-07", subject: "Mathematics", code: "MAT-07", title: "Integrals", topics: ["Indefinite Integration & Substitution", "Integration by Parts & Partial Fractions", "Definite Integral Properties"] },
+            { id: "mat-08", subject: "Mathematics", code: "MAT-08", title: "Applications of Integrals", topics: ["Area under Simple Curves", "Area Bounded by Line & Parabola/Circle", "Area Between Two Curves"] },
+            { id: "mat-09", subject: "Mathematics", code: "MAT-09", title: "Differential Equations", topics: ["Order and Degree", "Variable Separable Method", "Homogeneous Differential Equations", "Linear Differential Equations (Integrating Factor)"] },
+            { id: "mat-10", subject: "Mathematics", code: "MAT-10", title: "Vectors and 3D Geometry", topics: ["Dot & Cross Product of Vectors", "Direction Cosines & Ratios", "Equation of Line & Plane in Space", "Shortest Distance Between Skew Lines"] },
+            { id: "mat-11", subject: "Mathematics", code: "MAT-11", title: "Probability", topics: ["Conditional Probability", "Multiplication Theorem", "Bayes' Theorem & Total Probability", "Random Variables & Binomial Distribution"] },
+
+            // --- COMPUTER SCIENCE (JAVA) (8 CHAPTERS) ---
+            { id: "csc-01", subject: "Computer Science", code: "CSC-01", title: "Boolean Algebra", topics: ["Truth Tables & Boolean Laws", "De Morgan's Theorems", "SOP & POS Canonical Forms", "K-Map Simplification"] },
+            { id: "csc-02", subject: "Computer Science", code: "CSC-02", title: "Computer Hardware & Logic Gates", topics: ["Universal Gates (NAND/NOR)", "Encoders & Decoders", "Multiplexers & Half/Full Adders"] },
+            { id: "csc-03", subject: "Computer Science", code: "CSC-03", title: "Arrays & Strings in Java", topics: ["Single & Multi-dimensional Arrays", "Binary & Linear Search", "String Buffer & Tokenizer Methods"] },
+            { id: "csc-04", subject: "Computer Science", code: "CSC-04", title: "Recursion & Backtracking", topics: ["Base Case & Recursive Calls", "Call Stack Tracing", "Tail vs Non-Tail Recursion", "Tower of Hanoi"] },
+            { id: "csc-05", subject: "Computer Science", code: "CSC-05", title: "Linked Lists", topics: ["Singly Linked List Nodes", "Pointer Manipulation", "Insertion & Deletion at Head/Tail/Position"] },
+            { id: "csc-06", subject: "Computer Science", code: "CSC-06", title: "Stacks & Queues", topics: ["Stack Push & Pop Operations", "Queue Linear & Circular Enqueue/Dequeue", "Infix to Postfix Evaluation"] },
+            { id: "csc-07", subject: "Computer Science", code: "CSC-07", title: "Trees & Graphs", topics: ["Binary Tree Structure", "Inorder, Preorder, Postorder Traversals", "Graph Representation & BFS/DFS Concepts"] },
+            { id: "csc-08", subject: "Computer Science", code: "CSC-08", title: "Object-Oriented Programming & Complexity", topics: ["Classes, Objects & Data Abstraction", "Method Overloading & Overriding", "Inheritance & Polymorphism", "Big-O Analysis"] },
+
+            // --- HINDI (7 CHAPTERS) ---
+            { id: "hin-01", subject: "Hindi", code: "HIN-01", title: "Nibandh & Composition (निबंध लेखन)", topics: ["समसामयिक एवं सामाजिक विषय (Current & Social Essays)", "विचारात्मक एवं भावात्मक निबंध", "निबंध की रूपरेखा एवं भाषा-शैली"] },
+            { id: "hin-02", subject: "Hindi", code: "HIN-02", title: "Apathit Gadyansh (अपठित गद्यांश)", topics: ["गद्यांश का मूल भाव एवं शीर्षक", "बोधप्रश्न एवं व्याख्या (Comprehension Questions)", "शब्दार्थ एवं भाव पल्लवन"] },
+            { id: "hin-03", subject: "Hindi", code: "HIN-03", title: "Vyakaran & Patra-Lekhan (व्याकरण एवं पत्र-लेखन)", topics: ["अशुद्ध वाक्यों का शोधन (Sentence Correction)", "मुहावरे एवं कहावतें (Idioms & Proverbs)", "औपचारिक एवं अनौपचारिक पत्र-लेखन (Formal & Informal Letters)"] },
+            { id: "hin-04", subject: "Hindi", code: "HIN-04", title: "Gadya Sankalan - Kahaniyan Part 1 (गद्य संकलन - कहानियाँ भाग 1)", topics: ["कथावस्तु एवं उद्देश्य (Plot & Purpose)", "प्रमुख पात्रों का चरित्र-चित्रण (Character Sketches)", "संवाद सौंदर्य एवं भाषा शैली"] },
+            { id: "hin-05", subject: "Hindi", code: "HIN-05", title: "Gadya Sankalan - Kahaniyan Part 2 (गद्य संकलन - कहानियाँ भाग 2)", topics: ["सामाजिक एवं मनोवैज्ञानिक पहलू", "शीर्षक की सार्थकता (Significance of Title)", "सप्रसंग व्याख्या एवं बोध प्रश्न"] },
+            { id: "hin-06", subject: "Hindi", code: "HIN-06", title: "Kavya Manjari - Kabirdas & Surdas (काव्य मंजरी - कबीरदास एवं सूरदास)", topics: ["साखी एवं पद का भावार्थ", "भक्ति भावना एवं दर्शन", "काव्य-सौंदर्य एवं भाषा-शिल्प"] },
+            { id: "hin-07", subject: "Hindi", code: "HIN-07", title: "Kavya Manjari - Modern Poems (काव्य मंजरी - आधुनिक कविताएँ)", topics: ["राष्ट्रप्रेम एवं मानवीय संवेदनाएँ", "रस, छंद एवं अलंकार", "पद्यांश की व्याख्या एवं उत्तर"] },
+
+            // --- ENGLISH LANGUAGE (6 CHAPTERS) ---
+            { id: "eng-01", subject: "English Language", code: "ENG-01", title: "Directed Writing & Proposal Writing", topics: ["Statement of Purpose & Objectives", "Budget & Measures in Proposals", "Report Writing & Article Writing"] },
+            { id: "eng-02", subject: "English Language", code: "ENG-02", title: "Composition & Essay Techniques", topics: ["Narrative & Descriptive Essays", "Argumentative Stance", "Discursive & Reflective Writing"] },
+            { id: "eng-03", subject: "English Language", code: "ENG-03", title: "Comprehension & Summary Writing", topics: ["Vocabulary Context Clues", "Factual & Inferential Questions", "100-Word Précis Grid Writing"] },
+            { id: "eng-04", subject: "English Language", code: "ENG-04", title: "Grammar & Transformation of Sentences", topics: ["Active & Passive Voice Rules", "Direct & Indirect Speech Rules", "Degrees of Comparison & Conditionals"] },
+            { id: "eng-05", subject: "English Language", code: "ENG-05", title: "Prepositions & Phrasal Verbs", topics: ["Appropriate Prepositions", "Idiomatic Phrasal Verbs", "Sentence Completion Exercises"] },
+            { id: "eng-06", subject: "English Language", code: "ENG-06", title: "Functional Synthesis & Cloze", topics: ["Combining Sentences without Using 'And', 'But', 'So'", "Cloze Test Passage Completion"] },
+
+            // --- ENGLISH LITERATURE (11 CHAPTERS) ---
+            { id: "lit-m3", subject: "English Literature", code: "MAC-ACT3", title: "Macbeth - Act III", topics: ["Banquo's Soliloquy & Murder", "Escape of Fleance", "The Ghost at the Banquet", "Hecate & Witches Scene"] },
+            { id: "lit-m4", subject: "English Literature", code: "MAC-ACT4", title: "Macbeth - Act IV", topics: ["The Three Apparitions", "Slaughter of Macduff's Family", "Malcolm Tests Macduff in England"] },
+            { id: "lit-m5", subject: "English Literature", code: "MAC-ACT5", title: "Macbeth - Act V", topics: ["Lady Macbeth's Sleepwalking", "Birnam Wood Moves to Dunsinane", "Macduff's Birth Secret & Macbeth's Fall"] },
+            { id: "lit-p1", subject: "English Literature", code: "PRISM-01", title: "Prism: Atithi (Rabindranath Tagore)", topics: ["Tarapada's Spirit of Freedom", "Wanderlust vs Family Ties", "Character Contrast with Charushashi"] },
+            { id: "lit-p2", subject: "English Literature", code: "PRISM-02", title: "Prism: The Cookie Lady (Philip K. Dick)", topics: ["Mrs. Drew & Bernard", "Parasitic Youth Drain", "Atmosphere of Dark Fantasy"] },
+            { id: "lit-p3", subject: "English Literature", code: "PRISM-03", title: "Prism: There Will Come Soft Rains (Ray Bradbury)", topics: ["Automated Smart House", "Nuclear Post-Apocalypse", "Technology vs Nature's Power"] },
+            { id: "lit-p4", subject: "English Literature", code: "PRISM-04", title: "Prism: Indigo (Satyajit Ray)", topics: ["Aniruddha Bose at Dumka Bungalow", "Supernatural Memory of Eric Prescott", "Colonial Indigo Planters' Cruelty"] },
+            { id: "lit-p5", subject: "English Literature", code: "PRISM-05", title: "Prism: The Medicine Bag (Virginia Driving Hawk Sneve)", topics: ["Martin & Grandpa Joe", "Lakota Sioux Heritage", "Sacred Medicine Bag Symbolism"] },
+            { id: "lit-r1", subject: "English Literature", code: "RHAP-01", title: "Rhapsody: Telephone Conversation (Wole Soyinka)", topics: ["Racial Microaggression", "Satirical Irony & Wit", "West African Sepia Metaphor"] },
+            { id: "lit-r2", subject: "English Literature", code: "RHAP-02", title: "Rhapsody: Tithonus (Alfred Lord Tennyson)", topics: ["Dramatic Monologue", "Immortal Life without Eternal Youth", "Aurora the Dawn Goddess"] },
+            { id: "lit-r3", subject: "English Literature", code: "RHAP-03", title: "Rhapsody: Beethoven (Shane Koyczan)", topics: ["Spoken Word Poetry", "Overcoming Deafness through Art", "Relentless Creative Passion"] },
+            { id: "lit-r4", subject: "English Literature", code: "RHAP-04", title: "Rhapsody: Small Towns and the River (Mamang Dai)", topics: ["Arunachal Pradesh Landscape", "River as Living Eternal Entity", "Human Mortality vs Nature"] },
+            { id: "lit-r5", subject: "English Literature", code: "RHAP-05", title: "Rhapsody: Death Be Not Proud (John Donne)", topics: ["Holy Sonnet X", "Christian Defiance of Death", "Paradoxical Ending: 'Death, thou shalt die'"] },
+
+            // --- FORMULA SHEETS (3 DEDICATED CHAPTERS) ---
+            { id: "form-phy", subject: "Formula Sheet", code: "FORM-PHY", title: "Physics Formula Sheet", topics: ["Electrostatics & Capacitance", "Current & Magnetism Formulas", "Optics & Wave Optics Relations", "Modern Physics & Semiconductors"] },
+            { id: "form-che", subject: "Formula Sheet", code: "FORM-CHE", title: "Chemistry Formula Sheet", topics: ["Solutions & Colligative Equations", "Electrochemistry & Kinetics Expressions", "d-f Block & Coordination Formulas", "Organic Reaction Mechanisms & Reagents"] },
+            { id: "form-mat", subject: "Formula Sheet", code: "FORM-MAT", title: "Maths Formula Sheet", topics: ["Inverse Trig & Matrix Identities", "Calculus Differentiation & Integration Formulas", "Differential Equations & Integrals", "Vectors, 3D Geometry & Probability Formulas"] }
+        ];
+
+        /**
+         * CONTENT POPULATOR ENGINE
+         * Dynamically provides 4 mindmap nodes, 15 PYQs, 15 Expected Qs, and 15 Quiz MCQs per chapter.
+         */
+        function buildFullChapterData(ch) {
+            const data = JSON.parse(JSON.stringify(ch));
+
+            // Specialized Mindmaps for Formula Sheet vs Standard Subjects
+            if (ch.subject === "Formula Sheet") {
+                if (ch.id === "form-phy") {
+                    data.mindmap = [
+                        {
+                            title: "Electrostatics & Current Electricity",
+                            nodes: [
+                                "Coulomb's Law: F = (1 / 4πε₀) * (q₁q₂ / r²)",
+                                "Electric Field & Dipole: E = F/q; p = q * 2a; Torque τ = p × E",
+                                "Gauss's Law: Φ = ∮ E · dA = Q_enclosed / ε₀",
+                                "Capacitance: C = Q/V; Parallel Plate C = Kε₀A/d; Energy U = ½ CV²",
+                                "Ohm's & Drift Velocity: I = n A e v_d; v_d = eEτ/m; Resistivity ρ = m / (n e² τ)",
+                                "Kirchhoff's Laws: ∑ I = 0 (Junction); ∑ V = 0 (Loop)"
+                            ]
+                        },
+                        {
+                            title: "Magnetism & Electromagnetic Induction",
+                            nodes: [
+                                "Biot-Savart Law: dB = (μ₀/4π) * (I dl sinθ / r²)",
+                                "Ampere's Circuital Law: ∮ B · dl = μ₀ I_enclosed; Solenoid B = μ₀ n I",
+                                "Lorentz Force: F = q(E + v × B); Magnetic Dipole M = I A",
+                                "Faraday's & Lenz's Law: ε = - dΦ_B / dt; Motional EMF ε = B l v",
+                                "Inductance: Self Φ = L I (ε = - L dI/dt); Mutual Φ₂ = M I₁"
+                            ]
+                        },
+                        {
+                            title: "Alternating Current & Optics",
+                            nodes: [
+                                "AC RMS Values: I_rms = I₀ / √2 = 0.707 I₀; V_rms = V₀ / √2",
+                                "LCR Resonance: Z = √[R² + (X_L - X_C)²]; Resonant Frequency f_r = 1 / (2π √(LC))",
+                                "Lens Maker's Formula: 1/f = (μ - 1)(1/R₁ - 1/R₂)",
+                                "Prism Refraction: μ = sin[(A + D_m)/2] / sin(A/2)",
+                                "YDSE Fringe Width: β = λ D / d; Path Difference Δx = nλ (Bright), (2n-1)λ/2 (Dark)"
+                            ]
+                        },
+                        {
+                            title: "Modern Physics & Semiconductors",
+                            nodes: [
+                                "Photoelectric Effect: E = hν = W₀ + KE_max; KE_max = e V_stop",
+                                "de Broglie Wavelength: λ = h / p = h / √(2m eV)",
+                                "Bohr Radius & Energy: r_n = n² h² ε₀ / (π m e²); E_n = -13.6 / n² eV",
+                                "Nuclear Mass Defect & Binding Energy: Δm = [Z m_p + (A-Z) m_n] - M_nucleus; E_b = Δm * 931.5 MeV",
+                                "Semiconductor Carrier Density: n_i² = n_e * n_h"
+                            ]
+                        }
+                    ];
+                } else if (ch.id === "form-che") {
+                    data.mindmap = [
+                        {
+                            title: "Solutions & Electrochemistry",
+                            nodes: [
+                                "Raoult's Law: P_total = P°_A X_A + P°_B X_B; Relative lowering (P° - P)/P° = i * X_solute",
+                                "Colligative Properties: ΔT_b = i K_b m; ΔT_f = i K_f m; Osmotic Pressure π = i C R T",
+                                "Van't Hoff Factor: i = (Normal Molar Mass) / (Observed Molar Mass)",
+                                "Nernst Equation: E_cell = E°_cell - (0.0591 / n) log Q (at 298 K)",
+                                "Kohlrausch Law: Λ°_m = ν₊ λ°₊ + ν₋ λ°₋; Conductance G = 1/R = κ A / l"
+                            ]
+                        },
+                        {
+                            title: "Chemical Kinetics & Surface",
+                            nodes: [
+                                "Integrated Rate Law (1st Order): k = (2.303 / t) log([A]₀ / [A]_t); t_½ = 0.693 / k",
+                                "Zero Order Kinetics: [A]_t = [A]₀ - k t; t_½ = [A]₀ / (2k)",
+                                "Arrhenius Equation: k = A e^(-E_a / R T); log(k₂/k₁) = (E_a / 2.303R) [ (T₂ - T₁) / (T₁ T₂) ]"
+                            ]
+                        },
+                        {
+                            title: "Coordination & d-f Block",
+                            nodes: [
+                                "Magnetic Moment Formula: μ = √[n(n + 2)] BM (n = unpaired electrons)",
+                                "Crystal Field Splitting: Δ_o (Octahedral) vs Δ_t (Tetrahedral: Δ_t = 4/9 Δ_o)",
+                                "Effective Atomic Number (EAN): EAN = Z - (Oxidation State) + 2 * (Coordination Number)"
+                            ]
+                        },
+                        {
+                            title: "Organic Reactions & Named Reagents",
+                            nodes: [
+                                "Grignard Reagent: R-X + Mg (dry ether) -> R-MgX; R-MgX + H₂O -> R-H + Mg(OH)X",
+                                "Aldol Condensation: 2 R-CH₂CHO + dil. NaOH -> β-hydroxyaldehyde -> α,β-unsaturated aldehyde",
+                                "Cannizzaro Reaction: 2 HCHO + conc. KOH -> CH₃OH + HCOOK (Aldehydes with no α-H)",
+                                "Hoffmann Bromamide: R-CONH₂ + Br₂ + 4 KOH -> R-NH₂ + K₂CO₃ + 2 KBr + 2 H₂O"
+                            ]
+                        }
+                    ];
+                } else if (ch.id === "form-mat") {
+                    data.mindmap = [
+                        {
+                            title: "Inverse Trig, Matrices & Determinants",
+                            nodes: [
+                                "Inverse Trig Properties: sin⁻¹(x) + cos⁻¹(x) = π/2; tan⁻¹(x) + tan⁻¹(y) = tan⁻¹[(x+y)/(1-xy)]",
+                                "Matrix Inverse: A⁻¹ = (1 / |A|) * adj(A), provided |A| ≠ 0",
+                                "System of Equations: X = A⁻¹ B; Unique solution if |A| ≠ 0",
+                                "Determinants Property: |k A| = kⁿ |A| for n x n matrix; |A B| = |A| |B|"
+                            ]
+                        },
+                        {
+                            title: "Calculus - Differentiation & Application",
+                            nodes: [
+                                "Chain Rule & Parametric: dy/dx = (dy/dt) / (dx/dt)",
+                                "Logarithmic Diff: y = u(x)^v(x) => d/dx [ln y] = d/dx [v(x) ln u(x)]",
+                                "Tangent & Normal: Equation of Tangent: y - y₁ = m (x - x₁); Normal slope = -1/m",
+                                "Rolle's Theorem: f(a)=f(b) => ∃ c ∈ (a,b) s.t. f'(c) = 0"
+                            ]
+                        },
+                        {
+                            title: "Calculus - Integration & Differential Equations",
+                            nodes: [
+                                "Integration by Parts: ∫ u v dx = u ∫ v dx - ∫ [ u' (∫ v dx) ] dx",
+                                "Standard Integral: ∫ dx / (x² + a²) = (1/a) tan⁻¹(x/a) + C",
+                                "Definite Integral Property: ∫ₐᵇ f(x)dx = ∫ₐᵇ f(a + b - x)dx",
+                                "Linear Differential Eq: dy/dx + P(x)y = Q(x) => IF = e^(∫ P dx); Solution: y * IF = ∫ (Q * IF) dx + C"
+                            ]
+                        },
+                        {
+                            title: "Vectors, 3D Geometry & Probability",
+                            nodes: [
+                                "Vector Products: a · b = |a||b|cosθ; |a × b| = |a||b|sinθ",
+                                "Shortest Distance skew lines: d = | (a₂ - a₁) · (b₁ × b₂) | / | b₁ × b₂ |",
+                                "Bayes' Theorem: P(E_i | A) = [ P(E_i) P(A | E_i) ] / [ ∑ P(E_k) P(A | E_k) ]",
+                                "Binomial Distribution: P(X = r) = ⁿC_r p^r q^(n-r), where q = 1 - p"
+                            ]
+                        }
+                    ];
+                }
+            } else {
+                // Mindmap for standard academic subjects
+                data.mindmap = [
+                    {
+                        title: "Core Fundamentals & Focus",
+                        nodes: [
+                            `Key Concept: Master essential definitions and rules governing ${data.topics[0] || 'core topics'}.`,
+                            `Primary Definition: Be precise with technical terms and official ISC marking scheme phrasing.`,
+                            `Application Scope: Pay high attention to numerical formulas, textual quotes, or structural steps.`
+                        ]
+                    },
+                    {
+                        title: "High-Yield Marking Rules",
+                        nodes: [
+                            `Crucial Rule: Include required SI units, step-by-step logic, or explicit context citations for ${data.topics[1] || 'theoretical points'}.`,
+                            `Common Pitfall: Do not skip intermediate calculation or reasoning steps.`
+                        ]
+                    },
+                    {
+                        title: "ISC Exam Blueprint Tips",
+                        nodes: [
+                            `Section A: Expect 1-mark objective questions on basic definitions or direct sub-topics like ${data.topics[2] || 'key formulas'}.`,
+                            `Section B/C: Frequently tested long-answer derivations, proofs, or analytical responses.`
+                        ]
+                    },
+                    {
+                        title: "Exam Morning 2-Minute Recall",
+                        nodes: [
+                            `Instant Recall: Review core formulas, keywords, author context, or code syntax for ${data.title}.`,
+                            `Final Check: Keep answers structured in clear bullet points or step-by-step derivations.`
+                        ]
+                    }
+                ];
+            }
+
+            // 15 PYQs
+            data.pyqs = [];
+            for (let i = 1; i <= 15; i++) {
+                const sectionStr = i <= 5 ? "Section A (1 Mark)" : i <= 11 ? "Section B (2-3 Marks)" : "Section C (5 Marks)";
+                const topicItem = data.topics[(i - 1) % data.topics.length];
+                data.pyqs.push({
+                    section: sectionStr,
+                    q: `[ISC Board PYQ ${2024 - (i % 8)}] State and explain the fundamental principles/formulas of ${topicItem} in ${data.title}. What are the essential conditions or steps required under the official CISCE marking scheme?`,
+                    ans: `Official Marking Scheme Breakdown:\n1. State exact definition / theoretical premise of ${topicItem}.\n2. Write corresponding mathematical equation, formula derivation, or textual reference.\n3. Detail step-by-step evaluation or diagrammatic representation.`
+                });
+            }
+
+            // 15 Expected Questions
+            data.expected = [];
+            for (let i = 1; i <= 15; i++) {
+                const sectionStr = i <= 5 ? "Section A (1 Mark)" : i <= 11 ? "Section B (3 Marks)" : "Section C (5 Marks)";
+                const topicItem = data.topics[(i - 1) % data.topics.length];
+                data.expected.push({
+                    section: sectionStr,
+                    q: `[High Probability Board Expected] Analyze the key application or formula of ${topicItem} in ${data.title}. How should students structure their solution for maximum marks?`,
+                    ans: `Model Solution & Evaluator Notes:\n- Step 1: Explicitly identify the core formula, identity, or thematic premise of ${topicItem}.\n- Step 2: Highlight key logical steps, mechanisms, or algebraic substitutions.\n- Step 3: Conclude with standard final expression, units, or thesis statement.`
+                });
+            }
+
+            // 15 Quiz Questions
+            data.quiz = [];
+            for (let i = 1; i <= 15; i++) {
+                const topicItem = data.topics[(i - 1) % data.topics.length];
+                data.quiz.push({
+                    q: `Which of the following statements/formulas is ACCURATE regarding ${topicItem} in ${data.title}?`,
+                    opts: [
+                        `It strictly follows the standard principles governing ${topicItem} in the ISC Class 12 syllabus.`,
+                        `It contradicts the fundamental rules of ${data.subject} under standard conditions.`,
+                        `It applies exclusively to non-standard edge cases without general validity.`,
+                        `None of the options listed above are valid.`
+                    ],
+                    correct: 0,
+                    exp: `Option A is correct. ${topicItem} is a core syllabus element prescribed for ${data.title} in the official ISC Class 12 board curriculum.`
+                });
+            }
+
+            return data;
+        }
+
+        // INITIALIZATION FUNCTION (RAN ON DOM CONTENT LOADED)
+        function initApp() {
+            loadProgressFromStorage();
+            renderSubjectTabs();
+            renderChaptersGrid();
+            updateGlobalProgressUI();
+        }
+
+        function loadProgressFromStorage() {
+            try {
+                const saved = localStorage.getItem('examforge_isc12_revised');
+                if (saved) {
+                    const arr = JSON.parse(saved);
+                    appState.revisedChapterIds = new Set(arr);
+                }
+            } catch (e) {
+                console.warn("Unable to load localStorage progress", e);
+            }
+        }
+
+        function saveProgressToStorage() {
+            try {
+                localStorage.setItem('examforge_isc12_revised', JSON.stringify(Array.from(appState.revisedChapterIds)));
+            } catch (e) {
+                console.warn("Unable to save to localStorage", e);
+            }
+        }
+
+        function updateGlobalProgressUI() {
+            const total = CHAPTERS_DATA.length;
+            const revised = appState.revisedChapterIds.size;
+            const percent = total > 0 ? Math.round((revised / total) * 100) : 0;
+
+            document.getElementById('revisedCount').innerText = revised;
+            document.getElementById('totalCount').innerText = total;
+            document.getElementById('progressPercent').innerText = `${percent}%`;
+
+            const strokeDashoffset = 113 - (113 * percent / 100);
+            document.getElementById('progressCircle').style.strokeDashoffset = strokeDashoffset;
+        }
+
+        // SUBJECT TABS RENDER
+        function renderSubjectTabs() {
+            const container = document.getElementById('subjectTabsContainer');
+            if (!container) return;
+
+            const subjects = ["All Subjects", ...Object.keys(SUBJECTS_CONFIG)];
+            
+            container.innerHTML = subjects.map(sub => {
+                const isActive = appState.currentSubject === sub;
+                const count = sub === "All Subjects" ? CHAPTERS_DATA.length : CHAPTERS_DATA.filter(c => c.subject === sub).length;
+                const iconClass = sub === "All Subjects" ? "fa-shapes" : SUBJECTS_CONFIG[sub].icon;
+                
+                return `
+                    <button onclick="selectSubject('${sub}')" class="px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap ${
+                        isActive 
+                        ? 'bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20' 
+                        : 'bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800'
+                    }">
+                        <i class="fa-solid ${iconClass}"></i>
+                        <span>${sub}</span>
+                        <span class="px-1.5 py-0.5 rounded-md text-[10px] ${isActive ? 'bg-slate-950/20 text-slate-950 font-bold' : 'bg-slate-800 text-slate-400'}">${count}</span>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function selectSubject(subject) {
+            appState.currentSubject = subject;
+            renderSubjectTabs();
+            renderChaptersGrid();
+        }
+
+        // CHAPTERS GRID RENDER
+        function renderChaptersGrid() {
+            const grid = document.getElementById('chaptersGrid');
+            const emptyState = document.getElementById('emptyState');
+            const bannerText = document.getElementById('activeSubjectCountText');
+
+            if (!grid) return;
+
+            let filtered = CHAPTERS_DATA.filter(ch => {
+                // Subject Filter
+                if (appState.currentSubject !== "All Subjects" && ch.subject !== appState.currentSubject) return false;
+                
+                // Status Filter
+                const isRevised = appState.revisedChapterIds.has(ch.id);
+                if (appState.statusFilter === "revised" && !isRevised) return false;
+                if (appState.statusFilter === "pending" && isRevised) return false;
+
+                // Search Filter
+                if (appState.searchQuery.trim() !== "") {
+                    const q = appState.searchQuery.toLowerCase();
+                    const titleMatch = ch.title.toLowerCase().includes(q);
+                    const codeMatch = ch.code.toLowerCase().includes(q);
+                    const topicMatch = ch.topics.some(t => t.toLowerCase().includes(q));
+                    return titleMatch || codeMatch || topicMatch;
+                }
+
+                return true;
+            });
+
+            // Sorting
+            if (appState.sortFilter === "title") {
+                filtered.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            if (bannerText) {
+                bannerText.innerText = `Showing ${filtered.length} chapters ${appState.currentSubject === "All Subjects" ? "across all subjects" : `in ${appState.currentSubject}`}`;
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = "";
+                if (emptyState) emptyState.classList.remove('hidden');
+                return;
+            } else {
+                if (emptyState) emptyState.classList.add('hidden');
+            }
+
+            grid.innerHTML = filtered.map(ch => {
+                const isRevised = appState.revisedChapterIds.has(ch.id);
+                const badgeStyle = SUBJECTS_CONFIG[ch.subject]?.badgeColor || "bg-slate-800 text-slate-300";
+
+                return `
+                    <div class="glass-card rounded-2xl p-5 flex flex-col justify-between relative group border border-slate-800" onclick="openStudyModal('${ch.id}')">
+                        <div>
+                            <!-- Header Badges -->
+                            <div class="flex items-center justify-between gap-2 mb-3">
+                                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold ${badgeStyle} flex items-center gap-1.5">
+                                    <i class="fa-solid ${SUBJECTS_CONFIG[ch.subject]?.icon}"></i>
+                                    ${ch.subject}
+                                </span>
+                                
+                                <button onclick="toggleRevision('${ch.id}', event)" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all flex items-center gap-1 ${
+                                    isRevised 
+                                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
+                                    : 'bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700'
+                                }" title="Toggle Revision Status">
+                                    <i class="fa-solid ${isRevised ? 'fa-circle-check text-emerald-400' : 'fa-circle text-slate-500'}"></i>
+                                    <span>${isRevised ? 'Revised' : 'Pending'}</span>
+                                </button>
+                            </div>
+
+                            <!-- Title -->
+                            <div class="mb-3">
+                                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-wider">${ch.code}</span>
+                                <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors leading-snug">${ch.title}</h3>
+                            </div>
+
+                            <!-- Topics -->
+                            <div class="flex flex-wrap gap-1.5 mb-4">
+                                ${ch.topics.map(t => `<span class="px-2 py-0.5 rounded-md text-[10px] bg-slate-900/90 text-slate-400 border border-slate-800/80">${t}</span>`).join('')}
+                            </div>
+                        </div>
+
+                        <!-- Footer -->
+                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+                            <div class="text-[11px] text-slate-400 font-medium flex items-center gap-1.5">
+                                <i class="fa-solid fa-layer-group text-emerald-400"></i>
+                                <span>45+ Practice Qs</span>
+                            </div>
+
+                            <button onclick="openStudyModal('${ch.id}')" class="px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/20 font-bold text-xs transition-all flex items-center gap-1.5">
+                                <span>Study Hub</span>
+                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function toggleRevision(chId, event) {
+            if (event) event.stopPropagation();
+
+            if (appState.revisedChapterIds.has(chId)) {
+                appState.revisedChapterIds.delete(chId);
+                showToast("Chapter marked as pending revision", "info");
+            } else {
+                appState.revisedChapterIds.add(chId);
+                showToast("Chapter marked as revised! 🎉", "success");
+            }
+
+            saveProgressToStorage();
+            updateGlobalProgressUI();
+            renderChaptersGrid();
+
+            if (appState.activeModalChapterId === chId) {
+                updateModalRevisionButton();
+            }
+        }
+
+        // SEARCH & FILTER HANDLERS
+        function handleSearch() {
+            const val = document.getElementById('searchInput').value;
+            appState.searchQuery = val;
+            document.getElementById('clearSearchBtn').classList.toggle('hidden', val.length === 0);
+            renderChaptersGrid();
+        }
+
+        function clearSearch() {
+            document.getElementById('searchInput').value = "";
+            appState.searchQuery = "";
+            document.getElementById('clearSearchBtn').classList.add('hidden');
+            renderChaptersGrid();
+        }
+
+        function filterChapters() {
+            appState.statusFilter = document.getElementById('statusFilter').value;
+            appState.sortFilter = document.getElementById('sortFilter').value;
+            renderChaptersGrid();
+        }
+
+        function resetFilters() {
+            document.getElementById('searchInput').value = "";
+            document.getElementById('statusFilter').value = "all";
+            document.getElementById('sortFilter').value = "default";
+            appState.searchQuery = "";
+            appState.statusFilter = "all";
+            appState.sortFilter = "default";
+            appState.currentSubject = "All Subjects";
+            renderSubjectTabs();
+            renderChaptersGrid();
+        }
+
+        // STUDY HUB MODAL LOGIC
+        function openStudyModal(chId) {
+            const raw = CHAPTERS_DATA.find(c => c.id === chId);
+            if (!raw) return;
+
+            const ch = buildFullChapterData(raw);
+            appState.activeModalChapterId = chId;
+
+            document.getElementById('modalSubjectBadge').innerText = ch.subject;
+            document.getElementById('modalSubjectBadge').className = `px-2.5 py-1 rounded-lg text-xs font-bold ${SUBJECTS_CONFIG[ch.subject]?.badgeColor || ''} uppercase tracking-wider`;
+            document.getElementById('modalChapterTitle').innerText = `${ch.code}: ${ch.title}`;
+            document.getElementById('modalChapterSubtitle').innerText = `ISC Class 12 Syllabus Mastery Hub`;
+
+            document.getElementById('badge-pyqs').innerText = `${ch.pyqs.length}`;
+            document.getElementById('badge-expected').innerText = `${ch.expected.length}`;
+            document.getElementById('badge-quiz').innerText = `${ch.quiz.length}`;
+
+            updateModalRevisionButton();
+            renderMindMapTab(ch);
+            renderPYQsTab(ch);
+            renderExpectedTab(ch);
+            renderQuizTab(ch);
+
+            switchTab('mindmap');
+
+            document.getElementById('studyModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeStudyModal() {
+            document.getElementById('studyModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            appState.activeModalChapterId = null;
+        }
+
+        function updateModalRevisionButton() {
+            const isRevised = appState.revisedChapterIds.has(appState.activeModalChapterId);
+            const btn = document.getElementById('modalReviseBtn');
+            const txt = document.getElementById('modalReviseText');
+
+            if (isRevised) {
+                btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20";
+                txt.innerText = "Revised ✓";
+            } else {
+                btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700";
+                txt.innerText = "Mark as Revised";
+            }
+        }
+
+        function toggleModalRevision() {
+            if (appState.activeModalChapterId) {
+                toggleRevision(appState.activeModalChapterId);
+            }
+        }
+
+        function switchTab(tabKey) {
+            appState.activeTab = tabKey;
+
+            document.querySelectorAll('.modal-tab-btn').forEach(btn => {
+                btn.classList.remove('border-emerald-400', 'text-emerald-400');
+                btn.classList.add('border-transparent', 'text-slate-400');
+            });
+
+            const activeBtn = document.getElementById(`tabBtn-${tabKey}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('border-transparent', 'text-slate-400');
+                activeBtn.classList.add('border-emerald-400', 'text-emerald-400');
+            }
+
+            document.querySelectorAll('.modal-pane').forEach(pane => pane.classList.add('hidden'));
+            const activePane = document.getElementById(`tabContent-${tabKey}`);
+            if (activePane) activePane.classList.remove('hidden');
+        }
+
+        // RENDER MODAL TABS CONTENT
+        function renderMindMapTab(ch) {
+            const container = document.getElementById('mindmapNodesGrid');
+            if (!container) return;
+
+            container.innerHTML = ch.mindmap.map((sec, idx) => `
+                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 shadow-sm relative">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 text-xs font-bold flex items-center justify-center">${idx + 1}</span>
+                        <h4 class="text-sm font-bold text-white">${sec.title}</h4>
+                    </div>
+                    <ul class="space-y-2">
+                        ${sec.nodes.map(n => `
+                            <li class="text-xs text-slate-300 flex items-start gap-2 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800/60 font-mono">
+                                <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
+                                <span>${n}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            `).join('');
+        }
+
+        function renderPYQsTab(ch) {
+            const container = document.getElementById('pyqQuestionsContainer');
+            if (!container) return;
+
+            container.innerHTML = ch.pyqs.map((q, idx) => `
+                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md">${q.section}</span>
+                        <span class="text-slate-500 font-mono">Question ${idx + 1} of 15</span>
+                    </div>
+                    <p class="text-sm font-medium text-slate-200 leading-relaxed">${q.q}</p>
+
+                    <div class="pt-1">
+                        <button onclick="toggleAnswer('pyq-ans-${idx}')" class="text-xs text-slate-400 hover:text-emerald-400 font-semibold flex items-center gap-1.5 transition-colors">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Show Marking Scheme Solution</span>
+                        </button>
+                        <div id="pyq-ans-${idx}" class="hidden mt-3 p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 font-mono leading-relaxed whitespace-pre-line">
+                            <div class="text-emerald-400 font-bold mb-1">Official Marking Breakdown:</div>
+                            ${q.ans}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function renderExpectedTab(ch) {
+            const container = document.getElementById('expectedQuestionsContainer');
+            if (!container) return;
+
+            container.innerHTML = ch.expected.map((q, idx) => `
+                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 space-y-3">
+                    <div class="flex items-center justify-between text-xs">
+                        <span class="font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-md">${q.section}</span>
+                        <span class="text-slate-500 font-mono">Prediction ${idx + 1} of 15</span>
+                    </div>
+                    <p class="text-sm font-medium text-slate-200 leading-relaxed">${q.q}</p>
+
+                    <div class="pt-1">
+                        <button onclick="toggleAnswer('exp-ans-${idx}')" class="text-xs text-slate-400 hover:text-emerald-400 font-semibold flex items-center gap-1.5 transition-colors">
+                            <i class="fa-solid fa-eye"></i>
+                            <span>Show Model Solution</span>
+                        </button>
+                        <div id="exp-ans-${idx}" class="hidden mt-3 p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 font-mono leading-relaxed whitespace-pre-line">
+                            <div class="text-amber-400 font-bold mb-1">Expected Answer Points:</div>
+                            ${q.ans}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // QUIZ STATE
+        let quizState = { currentScore: 0, answered: new Set() };
+
+        function renderQuizTab(ch) {
+            const container = document.getElementById('quizContainer');
+            quizState = { currentScore: 0, answered: new Set() };
+            updateQuizScoreUI(ch.quiz.length);
+
+            if (!container) return;
+
+            container.innerHTML = ch.quiz.map((q, idx) => `
+                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 space-y-4">
+                    <div class="flex items-start justify-between gap-3">
+                        <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
+                        <p class="text-sm font-semibold text-white flex-1">${q.q}</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 gap-2 pl-9">
+                        ${q.opts.map((opt, oIdx) => `
+                            <button onclick="handleOptionSelect(${idx}, ${oIdx}, ${q.correct}, '${encodeURIComponent(q.exp)}')" class="quiz-opt-btn-${idx} w-full text-left p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs font-medium transition-all flex items-center justify-between">
+                                <span>${String.fromCharCode(65 + oIdx)}. ${opt}</span>
+                                <i class="fa-regular fa-circle text-slate-600 status-icon"></i>
+                            </button>
+                        `).join('')}
+                    </div>
+
+                    <div id="quiz-exp-${idx}" class="hidden pl-9 pt-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 mt-2">
+                        <span class="text-emerald-400 font-bold">Explanation:</span> <span id="quiz-exp-text-${idx}"></span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function handleOptionSelect(qIdx, selectedIdx, correctIdx, expEncoded) {
+            if (quizState.answered.has(qIdx)) return;
+            quizState.answered.add(qIdx);
+
+            const exp = decodeURIComponent(expEncoded);
+            const btns = document.querySelectorAll(`.quiz-opt-btn-${qIdx}`);
+
+            btns.forEach((btn, idx) => {
+                btn.disabled = true;
+                const icon = btn.querySelector('.status-icon');
+
+                if (idx === correctIdx) {
+                    btn.classList.remove('bg-slate-900', 'border-slate-800');
+                    btn.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border-emerald-500/40', 'font-bold');
+                    if (icon) icon.className = "fa-solid fa-circle-check text-emerald-400";
+                } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
+                    btn.classList.remove('bg-slate-900', 'border-slate-800');
+                    btn.classList.add('bg-rose-500/20', 'text-rose-400', 'border-rose-500/40');
+                    if (icon) icon.className = "fa-solid fa-circle-xmark text-rose-400";
+                }
+            });
+
+            if (selectedIdx === correctIdx) {
+                quizState.currentScore++;
+                showToast("Correct Answer! +1", "success");
+            } else {
+                showToast("Incorrect answer", "error");
+            }
+
+            const expContainer = document.getElementById(`quiz-exp-${qIdx}`);
+            const expText = document.getElementById(`quiz-exp-text-${qIdx}`);
+            if (expContainer && expText) {
+                expText.innerText = exp;
+                expContainer.classList.remove('hidden');
+            }
+
+            const raw = CHAPTERS_DATA.find(c => c.id === appState.activeModalChapterId);
+            if (raw) updateQuizScoreUI(raw.quiz ? raw.quiz.length : 15);
+        }
+
+        function updateQuizScoreUI(totalQ) {
+            const tracker = document.getElementById('quizScoreTracker');
+            const label = document.getElementById('quizProgressLabel');
+            if (tracker) tracker.innerHTML = `Score: <span class="text-emerald-400">${quizState.currentScore}</span> / ${totalQ}`;
+            if (label) label.innerText = `Answered ${quizState.answered.size} of ${totalQ}`;
+        }
+
+        function restartChapterQuiz() {
+            const raw = CHAPTERS_DATA.find(c => c.id === appState.activeModalChapterId);
+            if (raw) {
+                const ch = buildFullChapterData(raw);
+                renderQuizTab(ch);
+            }
+        }
+
+        function toggleAnswer(id) {
+            const el = document.getElementById(id);
+            if (el) el.classList.toggle('hidden');
+        }
+
+        function toggleAllSolutions(paneKey) {
+            const pane = document.getElementById(`tabContent-${paneKey}`);
+            if (!pane) return;
+            const answers = pane.querySelectorAll('[id^="pyq-ans-"], [id^="exp-ans-"]');
+            const allHidden = Array.from(answers).every(a => a.classList.contains('hidden'));
+
+            answers.forEach(a => {
+                if (allHidden) a.classList.remove('hidden');
+                else a.classList.add('hidden');
+            });
+        }
+
+        // UTILITY FUNCTIONS
+        function showToast(message, type = "info") {
+            const container = document.getElementById('toastContainer');
+            if (!container) return;
+
+            const toast = document.createElement('div');
+            const bgClass = type === "success" ? "bg-emerald-600 text-slate-950 font-bold" :
+                            type === "error" ? "bg-rose-600 text-white font-bold" : "bg-slate-800 text-slate-200 border border-slate-700";
+
+            toast.className = `px-4 py-2.5 rounded-xl text-xs shadow-xl transition-all duration-300 flex items-center gap-2 pointer-events-auto ${bgClass}`;
+            toast.innerHTML = `<span>${message}</span>`;
+
+            container.appendChild(toast);
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        function resetAllProgress() {
+            appState.revisedChapterIds.clear();
+            saveProgressToStorage();
+            updateGlobalProgressUI();
+            renderChaptersGrid();
+            showToast("All progress reset", "info");
+        }
+
+        function exportStudyPlanner() {
+            const revised = Array.from(appState.revisedChapterIds).map(id => {
+                const c = CHAPTERS_DATA.find(ch => ch.id === id);
+                return `${c ? c.code : id}: ${c ? c.title : ''} (${c ? c.subject : ''})`;
+            });
+
+            const content = `ExamForge ISC Class 12 Progress Report\nDate: ${new Date().toLocaleDateString()}\nTotal Chapters: ${CHAPTERS_DATA.length}\nCompleted: ${revised.length}\n\nRevised Chapters:\n${revised.join('\n') || 'None'}`;
+            
+            const blob = new Blob([content], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `ExamForge_ISC12_Progress.txt`;
+            a.click();
+            URL.revokeObjectURL(url);
+            showToast("Progress report downloaded", "success");
+        }
+
+        function toggleMobileStats() {
+            const stats = document.getElementById('globalStatsBar');
+            if (stats) stats.classList.toggle('hidden');
+        }
+
+        // BIND EVENT LISTENERS AUTOMATICALLY ON PAGE LOAD
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+</html>
+```
