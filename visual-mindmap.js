@@ -145,13 +145,27 @@
   }
 
   function getChapterInfo() {
-    const h2 = document.querySelector('[role="dialog"] h2, .modal h2, h2');
-    const chapterTitle = h2 ? h2.textContent.trim() : "Chapter Mind Map";
-    const pts = [];
-    document.querySelectorAll('[role="dialog"] li, [role="dialog"] p, .modal li, .modal p').forEach((el) => {
-      const t = el.textContent.replace(/\s+/g, " ").trim();
-      if (t.length > 15 && t.length < 200 && !pts.includes(t)) pts.push(t);
+    const headings = Array.from(document.querySelectorAll("h1, h2, h3")).filter((el) => {
+      const t = (el.textContent || "").trim();
+      return t.length > 3 && !t.includes("ExamForge") && !t.includes("Score:") && !t.includes("No Matching");
     });
+    const chapterTitle = headings.length ? headings[headings.length - 1].textContent.trim() : "Chapter Mind Map";
+
+    const pts = [];
+    document.querySelectorAll("li, p").forEach((el) => {
+      const t = (el.textContent || "").replace(/\s+/g, " ").trim();
+      if (
+        t.length > 16 &&
+        t.length < 200 &&
+        !t.includes("2-Minute Exam Morning Revision Flow") &&
+        !t.includes("Toggle All") &&
+        !t.includes("Restart Quiz") &&
+        !pts.includes(t)
+      ) {
+        pts.push(t);
+      }
+    });
+
     const slice = (i, n, fb) => (pts.slice(i, i + n).length ? pts.slice(i, i + n) : fb);
 
     return {
@@ -209,9 +223,13 @@
 
   function bindQuizTab() {
     try {
-      const quizTab = Array.from(document.querySelectorAll("button, [role='tab']")).find(
-        (b) => b.textContent && b.textContent.includes("Practice Quiz") && !b.dataset.efMmDone
-      );
+      const quizTab = Array.from(document.querySelectorAll("button, [role='tab'], div, span")).find((el) => {
+        if (el.dataset && el.dataset.efMmDone) return false;
+        const txt = (el.textContent || "").trim();
+        const isClickable = el.tagName === "BUTTON" || el.getAttribute("role") === "tab" || typeof el.onclick === "function";
+        return isClickable && (txt.includes("Practice Quiz") || txt === "Quiz 15" || txt === "Practice Quiz 15");
+      });
+
       if (!quizTab) return;
       quizTab.dataset.efMmDone = "true";
       quizTab.textContent = "🧠 Mind Map";
@@ -227,31 +245,49 @@
         parent.parentElement.appendChild(host);
       }
 
+      const showMap = () => {
+        Array.from(parent.parentElement.children).forEach((el) => {
+          if (el !== parent && el !== host) {
+            el.dataset.efMmPrevDisplay = el.style.display || "";
+            el.style.display = "none";
+          }
+        });
+        host.style.display = "block";
+        renderMap(host);
+      };
+
+      const hideMap = () => {
+        host.style.display = "none";
+        Array.from(parent.parentElement.children).forEach((el) => {
+          if (el !== parent && el !== host && "efMmPrevDisplay" in el.dataset) {
+            el.style.display = el.dataset.efMmPrevDisplay;
+          }
+        });
+      };
+
       quizTab.addEventListener("click", () => {
-        setTimeout(() => {
-          Array.from(parent.parentElement.children).forEach((el) => {
-            if (el !== parent && el !== host && (el.textContent.includes("Question 0 of") || el.textContent.includes("Restart Quiz"))) {
-              el.style.display = "none";
-            }
-          });
-          host.style.display = "block";
-          renderMap(host);
-        }, 0);
+        setTimeout(showMap, 0);
       });
 
-      Array.from(parent.querySelectorAll("button, [role='tab']")).forEach((other) => {
+      Array.from(parent.children).forEach((other) => {
         if (other !== quizTab && !other.dataset.efMmHide) {
           other.dataset.efMmHide = "true";
           other.addEventListener("click", () => {
-            host.style.display = "none";
+            setTimeout(hideMap, 0);
           });
         }
       });
     } catch (_) {}
   }
 
-  window.addEventListener("DOMContentLoaded", () => {
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => {
+      bindQuizTab();
+      setInterval(bindQuizTab, 500);
+    });
+  } else {
     bindQuizTab();
-    setInterval(bindQuizTab, 800);
-  });
+    setInterval(bindQuizTab, 500);
+  }
 })();
+    
