@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ExamForge | ISC Class 12 Master Prep Hub</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -12,17 +11,8 @@
             theme: {
                 extend: {
                     colors: {
-                        slate: {
-                            850: '#151f32',
-                            900: '#0f172a',
-                            950: '#090d16',
-                        },
-                        emerald: {
-                            400: '#34d399',
-                            500: '#10b981',
-                            600: '#059669',
-                            700: '#047857',
-                        }
+                        slate: { 850: '#151f32', 900: '#0f172a', 950: '#090d16' },
+                        emerald: { 400: '#34d399', 500: '#10b981', 600: '#059669', 700: '#047857' }
                     },
                     fontFamily: {
                         sans: ['Inter', 'system-ui', 'sans-serif'],
@@ -32,1211 +22,350 @@
             }
         }
     </script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Patrick+Hand&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #f8fafc;
-        }
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1e293b;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #10b981;
-        }
-        .glass-panel {
-            background: rgba(30, 41, 59, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-        .glass-card {
-            background: rgba(30, 41, 59, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.25s ease-in-out;
-        }
-        .glass-card:hover {
-            border-color: rgba(16, 185, 129, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px -5px rgba(16, 185, 129, 0.1);
-        }
-        /* Custom scrollbar hide for tabs */
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #0f172a; color: #f8fafc; }
+        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.08); }
+        .glass-card { background: rgba(30, 41, 59, 0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.25s ease-in-out; }
+        .glass-card:hover { border-color: rgba(16, 185, 129, 0.4); transform: translateY(-2px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .ef-mm-canvas { background-color: #faf6ee; background-image: radial-gradient(#dcd3c1 1px, transparent 1px); background-size: 18px 18px; border: 2px solid #e2d8c5; border-radius: 18px; padding: 20px 16px; color: #292524; }
+        .ef-mm-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+        @media (max-width: 820px) { .ef-mm-grid { grid-template-columns: 1fr; } }
+        .ef-mm-card { border-radius: 16px; padding: 12px 14px; border: 2px solid rgba(41, 37, 36, 0.22); }
+        .ef-mm-card-title { font-family: 'Caveat', cursive, sans-serif; font-size: 1.32rem; font-weight: 700; color: #1c1917; margin: 0 0 6px; }
+        .ef-mm-card-list { font-family: 'Patrick Hand', cursive, sans-serif; font-size: 0.98rem; line-height: 1.35; color: #292524; margin: 0; padding-left: 16px; }
+        .ef-tone-sage { background: #dce8d6; border-color: #84a98c; }
+        .ef-tone-rose { background: #f7d6d8; border-color: #e07a82; }
+        .ef-tone-sky { background: #d7eaf8; border-color: #6ba4d9; }
+        .ef-tone-lilac { background: #e6dcf5; border-color: #9b7ede; }
+        .ef-tone-peach { background: #fadcd0; border-color: #e08d6d; }
+        .ef-tone-amber { background: #f9e7b8; border-color: #d4a338; }
+        .ef-tone-mint { background: #d9edd9; border-color: #68b078; }
+        .ef-mm-center-cloud { background: radial-gradient(circle at 30% 25%, #f3e8ff 0%, #e9d5ff 80%); border: 3px solid #7e22ce; border-radius: 36px; padding: 16px 14px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .ef-mm-center-title { font-family: 'Caveat', cursive, sans-serif; font-size: 1.72rem; font-weight: 700; line-height: 1.1; color: #3b0764; margin: 0 0 4px; }
+        .ef-mm-center-sub { font-family: 'Patrick Hand', cursive, sans-serif; font-size: 0.95rem; color: #581c87; margin: 0; }
+        .ef-mm-takeaway { margin-top: 14px; background: #fef3c7; border: 2px solid #d97706; border-radius: 14px; padding: 10px 14px; font-family: 'Patrick Hand', cursive, sans-serif; font-size: 1rem; font-weight: 600; color: #78350f; text-align: center; }
     </style>
 </head>
 <body class="min-h-screen flex flex-col antialiased selection:bg-emerald-500 selection:text-slate-900">
-
-    <!-- Toast Notification Container -->
     <div id="toastContainer" class="fixed top-5 right-5 z-50 flex flex-col gap-2 pointer-events-none"></div>
-
-    <!-- MAIN APP HEADER -->
     <header class="sticky top-0 z-40 glass-panel border-b border-slate-800/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-col md:flex-row items-center justify-between gap-4">
-            
-            <!-- Brand & Board Badge -->
             <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-slate-950 font-black text-xl shadow-lg shadow-emerald-500/20">
-                        <i class="fa-solid font-black fa-bolt"></i>
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-slate-950 font-black text-xl">
+                        <i class="fa-solid fa-bolt"></i>
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
                             <h1 class="text-xl font-extrabold tracking-tight text-white">Exam<span class="text-emerald-400">Forge</span></h1>
-                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-widest">ISC Class 12</span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase">ISC Class 12</span>
                         </div>
                         <p class="text-xs text-slate-400">CISCE Board Exam Companion & Revision Master</p>
                     </div>
                 </div>
-
-                <!-- Mobile Stats Toggle -->
-                <button onclick="toggleMobileStats()" class="md:hidden p-2 rounded-lg bg-slate-800 text-slate-300 hover:text-white">
-                    <i class="fa-solid fa-chart-pie"></i>
-                </button>
+                <button onclick="toggleMobileStats()" class="md:hidden p-2 rounded-lg bg-slate-800 text-slate-300"><i class="fa-solid fa-chart-pie"></i></button>
             </div>
-
-            <!-- Global Revision Progress Tracker -->
             <div id="globalStatsBar" class="w-full md:w-auto flex items-center justify-between md:justify-end gap-6 bg-slate-900/60 p-2.5 px-4 rounded-xl border border-slate-800">
                 <div class="flex items-center gap-4">
-                    <!-- Progress Circle -->
                     <div class="relative w-11 h-11 flex items-center justify-center">
                         <svg class="w-11 h-11 transform -rotate-90">
                             <circle cx="22" cy="22" r="18" stroke="currentColor" stroke-width="4" class="text-slate-800" fill="transparent" />
-                            <circle id="progressCircle" cx="22" cy="22" r="18" stroke="currentColor" stroke-width="4" class="text-emerald-400 transition-all duration-500 ease-out" fill="transparent" stroke-dasharray="113" stroke-dashoffset="113" />
+                            <circle id="progressCircle" cx="22" cy="22" r="18" stroke="currentColor" stroke-width="4" class="text-emerald-400 transition-all duration-500" fill="transparent" stroke-dasharray="113" stroke-dashoffset="113" />
                         </svg>
                         <span id="progressPercent" class="absolute text-[11px] font-bold text-emerald-400">0%</span>
                     </div>
-
                     <div>
                         <div class="text-xs font-medium text-slate-400">Chapters Revised</div>
                         <div class="text-sm font-bold text-white flex items-center gap-1.5">
                             <span id="revisedCount" class="text-emerald-400">0</span> / <span id="totalCount">79</span>
-                            <span class="text-[10px] text-slate-500 font-normal">(Full Syllabus)</span>
+                            <span class="text-[10px] text-slate-500">(Full Syllabus)</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="h-8 w-px bg-slate-800 hidden sm:block"></div>
-
-                <!-- Action Controls -->
                 <div class="flex items-center gap-2">
-                    <button onclick="resetAllProgress()" class="text-xs text-slate-400 hover:text-rose-400 transition-colors p-2 rounded-lg hover:bg-slate-800/60" title="Reset Local Progress">
-                        <i class="fa-solid fa-rotate-left"></i>
-                    </button>
-                    <button onclick="exportStudyPlanner()" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 transition-all flex items-center gap-1.5">
-                        <i class="fa-solid fa-download text-xs"></i>
-                        <span class="hidden sm:inline">Export Plan</span>
+                    <button onclick="resetAllProgress()" class="text-xs text-slate-400 hover:text-rose-400 p-2 rounded-lg"><i class="fa-solid fa-rotate-left"></i></button>
+                    <button onclick="exportStudyPlanner()" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 flex items-center gap-1.5">
+                        <i class="fa-solid fa-download text-xs"></i><span class="hidden sm:inline">Export Plan</span>
                     </button>
                 </div>
             </div>
         </div>
     </header>
-
-    <!-- SEARCH & CONTROLS SECTION -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-2 w-full">
-        <!-- Search & Dropdown Filters -->
         <div class="flex flex-col md:flex-row items-center gap-4">
-            
-            <!-- Search Input -->
             <div class="relative flex-1 w-full">
                 <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search chapter title, formula, act, story, poem, or topic..." class="w-full bg-slate-900/90 border border-slate-700/70 focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 text-slate-200 placeholder-slate-500 rounded-xl pl-10 pr-10 py-2.5 text-xs sm:text-sm transition-all outline-none">
-                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs">
-                    <i class="fa-solid fa-circle-xmark"></i>
-                </button>
+                <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Search chapter title, subject, or code..." class="w-full bg-slate-900/90 border border-slate-700/70 focus:border-emerald-500 text-slate-200 rounded-xl pl-10 pr-10 py-2.5 text-xs sm:text-sm outline-none">
+                <button id="clearSearchBtn" onclick="clearSearch()" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 text-xs"><i class="fa-solid fa-circle-xmark"></i></button>
             </div>
-
-            <!-- Status & Sort Dropdowns -->
             <div class="flex items-center gap-2 w-full md:w-auto">
-                <div class="relative flex-1 md:w-40">
-                    <select id="statusFilter" onchange="filterChapters()" class="w-full bg-slate-900 border border-slate-700/70 text-slate-200 text-xs rounded-xl px-3 py-2.5 outline-none focus:border-emerald-500 transition-all appearance-none cursor-pointer truncate">
-                        <option value="all">All Statuses</option>
-                        <option value="revised">✓ Revised</option>
-                        <option value="pending">⏳ Pending</option>
-                    </select>
-                    <i class="fa-solid fa-chevron-down absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
-                </div>
-
-                <div class="relative flex-1 md:w-44">
-                    <select id="sortFilter" onchange="filterChapters()" class="w-full bg-slate-900 border border-slate-700/70 text-slate-200 text-xs rounded-xl px-3 py-2.5 outline-none focus:border-emerald-500 transition-all appearance-none cursor-pointer truncate">
-                        <option value="default">Default ISC Order</option>
-                        <option value="title">Alphabetical (A-Z)</option>
-                    </select>
-                    <i class="fa-solid fa-arrow-down-short-wide absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 text-[10px] pointer-events-none"></i>
-                </div>
+                <select id="statusFilter" onchange="filterChapters()" class="flex-1 md:w-40 bg-slate-900 border border-slate-700/70 text-slate-200 text-xs rounded-xl px-3 py-2.5 outline-none">
+                    <option value="all">All Statuses</option>
+                    <option value="revised">✓ Revised</option>
+                    <option value="pending">⏳ Pending</option>
+                </select>
+                <select id="sortFilter" onchange="filterChapters()" class="flex-1 md:w-44 bg-slate-900 border border-slate-700/70 text-slate-200 text-xs rounded-xl px-3 py-2.5 outline-none">
+                    <option value="default">Default ISC Order</option>
+                    <option value="title">Alphabetical (A-Z)</option>
+                </select>
             </div>
         </div>
-
-        <!-- SUBJECT FILTER TABS (ALWAYS VISIBLE - ALL 9 SUBJECTS) -->
-        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar" id="subjectTabsContainer">
-            <!-- Dynamically rendered via JS on load -->
-        </div>
-
-        <!-- Dynamic Chapter Counter Text -->
+        <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar" id="subjectTabsContainer"></div>
         <div class="mt-2 mb-4 flex items-center justify-between text-xs text-slate-400 px-1">
             <span id="activeSubjectCountText" class="font-medium text-slate-300">Showing all 79 chapters</span>
-            <span class="hidden sm:flex items-center gap-1.5 text-slate-500"><i class="fa-solid fa-hand-pointer text-emerald-400"></i> Click any card to launch Study Hub</span>
         </div>
     </section>
-
-    <!-- CHAPTERS GRID CONTAINER -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 flex-1 w-full">
-        <div id="chaptersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <!-- Dynamic Chapter Cards Populated via JS -->
-        </div>
-
-        <!-- Empty Search Result State -->
+        <div id="chaptersGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"></div>
         <div id="emptyState" class="hidden text-center py-16 glass-panel rounded-2xl border border-slate-800">
-            <div class="w-16 h-16 rounded-full bg-slate-800 flex items-center justify-center mx-auto text-slate-500 text-2xl mb-3">
-                <i class="fa-solid fa-folder-open"></i>
-            </div>
             <h3 class="text-lg font-bold text-white mb-1">No Matching Chapters Found</h3>
-            <p class="text-sm text-slate-400 max-w-md mx-auto mb-4">Try adjusting your search query or switching subject tabs.</p>
-            <button onclick="resetFilters()" class="px-4 py-2 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold hover:bg-emerald-500/30 transition-all">
-                Reset All Filters
-            </button>
+            <button onclick="resetFilters()" class="mt-3 px-4 py-2 rounded-xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 text-xs font-semibold">Reset All Filters</button>
         </div>
     </main>
-
-    <!-- FOOTER -->
     <footer class="glass-panel border-t border-slate-800 py-6 text-center text-xs text-slate-400 mt-auto">
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
-            <div class="flex items-center gap-2">
-                <span class="font-bold text-slate-200">ExamForge</span> &bull; <span>ISC Class 12 Board Exam Preparation Hub</span>
-            </div>
-            <div class="flex items-center gap-4 text-slate-400">
-                <span class="flex items-center gap-1"><i class="fa-solid fa-shield-halved text-emerald-400"></i> 100% Offline Persistence</span>
-                <span>&bull;</span>
-                <span class="flex items-center gap-1"><i class="fa-solid fa-graduation-cap text-emerald-400"></i> CISCE Board Pattern Aligned</span>
-            </div>
+            <span><strong class="text-slate-200">ExamForge</strong> &bull; ISC Class 12 Board Exam Preparation Hub</span>
+            <span>100% Offline Persistence &bull; CISCE Board Pattern Aligned</span>
         </div>
     </footer>
-
-
-    <!-- ========================================== -->
-    <!--           STUDY HUB MODAL DIALOG           -->
-    <!-- ========================================== -->
     <div id="studyModal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
-        <div class="bg-slate-900 border border-slate-800 w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh] transition-all">
-            
-            <!-- Modal Header -->
+        <div class="bg-slate-900 border border-slate-800 w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
             <div class="p-4 sm:p-5 bg-slate-850 border-b border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div class="flex items-start gap-3">
-                    <span id="modalSubjectBadge" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase tracking-wider mt-0.5">
-                        Physics
-                    </span>
+                    <span id="modalSubjectBadge" class="px-2.5 py-1 rounded-lg text-xs font-bold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 uppercase mt-0.5">Physics</span>
                     <div>
-                        <h2 id="modalChapterTitle" class="text-lg sm:text-xl font-bold text-white tracking-tight">Chapter Title</h2>
+                        <h2 id="modalChapterTitle" class="text-lg sm:text-xl font-bold text-white">Chapter Title</h2>
                         <p id="modalChapterSubtitle" class="text-xs text-slate-400 mt-0.5">ISC Class 12 Board Exam Mastery</p>
                     </div>
                 </div>
-
-                <!-- Modal Controls -->
-                <div class="flex items-center gap-2.5 self-end sm:self-center">
-                    <button id="modalReviseBtn" onclick="toggleModalRevision()" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700">
-                        <i class="fa-solid fa-check"></i>
-                        <span id="modalReviseText">Mark as Revised</span>
+                <div class="flex flex-wrap items-center gap-2 self-end sm:self-center">
+                    <button type="button" onclick="switchTab('aiexpand')" id="tabBtn-aiexpand" class="modal-tab-btn px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 bg-purple-500/15 text-purple-300 border border-purple-500/30 cursor-pointer">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i><span>AI Expand Note</span>
                     </button>
-
-                    <button onclick="closeStudyModal()" class="p-2 rounded-xl bg-slate-800 hover:bg-rose-500/20 text-slate-400 hover:text-rose-400 transition-all text-xs">
-                        <i class="fa-solid fa-xmark text-sm"></i>
+                    <button id="modalReviseBtn" onclick="toggleModalRevision()" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 bg-slate-800 text-slate-300 border border-slate-700 cursor-pointer">
+                        <i class="fa-solid fa-check"></i><span id="modalReviseText">Mark as Revised</span>
                     </button>
+                    <button onclick="closeStudyModal()" class="p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-rose-400 text-xs cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
                 </div>
             </div>
-
-            <!-- Modal Tab Navigation -->
             <div class="bg-slate-900 border-b border-slate-800 px-4 pt-2 flex items-center gap-2 overflow-x-auto no-scrollbar">
-                <button onclick="switchTab('mindmap')" id="tabBtn-mindmap" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-emerald-400 text-emerald-400 transition-all whitespace-nowrap">
-                    <i class="fa-solid fa-brain text-sm"></i>
-                    <span>Quick Morning Mind Map</span>
+                <button onclick="switchTab('mindmap')" id="tabBtn-mindmap" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-emerald-400 text-emerald-400 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-stopwatch text-sm"></i><span>Quick Morning Mind Map</span>
                 </button>
-                <button onclick="switchTab('pyqs')" id="tabBtn-pyqs" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">
-                    <i class="fa-solid fa-file-signature text-sm"></i>
-                    <span>Repeated PYQs</span>
-                    <span id="badge-pyqs" class="px-1.5 py-0.5 text-[10px] rounded-full bg-slate-800 text-slate-400 font-mono">15</span>
+                <button onclick="switchTab('pyqs')" id="tabBtn-pyqs" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-file-signature text-sm"></i><span>Repeated PYQs</span><span class="px-1.5 py-0.5 text-[10px] rounded-full bg-slate-800 text-slate-400 font-mono">15</span>
                 </button>
-                <button onclick="switchTab('expected')" id="tabBtn-expected" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">
-                    <i class="fa-solid fa-bullseye text-sm"></i>
-                    <span>Expected Questions</span>
-                    <span id="badge-expected" class="px-1.5 py-0.5 text-[10px] rounded-full bg-slate-800 text-slate-400 font-mono">15</span>
+                <button onclick="switchTab('expected')" id="tabBtn-expected" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-bullseye text-sm"></i><span>Expected Questions</span><span class="px-1.5 py-0.5 text-[10px] rounded-full bg-slate-800 text-slate-400 font-mono">15</span>
                 </button>
-                <button onclick="switchTab('quiz')" id="tabBtn-quiz" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 hover:text-slate-200 transition-all whitespace-nowrap">
-                    <i class="fa-solid fa-circle-question text-sm"></i>
-                    <span>Practice Quiz</span>
-                    <span id="badge-quiz" class="px-1.5 py-0.5 text-[10px] rounded-full bg-slate-800 text-slate-400 font-mono">15</span>
+                <button onclick="switchTab('visualmap')" id="tabBtn-visualmap" class="modal-tab-btn flex items-center gap-2 px-4 py-3 text-xs font-bold border-b-2 border-transparent text-slate-400 whitespace-nowrap cursor-pointer">
+                    <i class="fa-solid fa-brain text-sm text-purple-400"></i><span>Mind Map</span>
                 </button>
             </div>
-
-            <!-- Modal Content Area -->
             <div class="p-4 sm:p-6 overflow-y-auto flex-1 bg-slate-900/60" id="modalPaneContainer">
-                
-                <!-- TAB 1: QUICK MORNING MIND MAP -->
                 <div id="tabContent-mindmap" class="modal-pane space-y-6">
-                    <div class="bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/20 p-4 rounded-xl flex items-center justify-between">
-                        <div class="flex items-center gap-3">
-                            <div class="w-9 h-9 rounded-lg bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
-                                <i class="fa-solid fa-stopwatch"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-sm font-bold text-white">2-Minute Exam Morning Revision Flow</h4>
-                                <p class="text-xs text-slate-400">Structured nodes, core formulas & critical points for fast exam hall recap.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="mindmapNodesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <!-- Rendered by JS -->
-                    </div>
+                    <div id="mindmapNodesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
                 </div>
-
-                <!-- TAB 2: REPEATED PYQs -->
                 <div id="tabContent-pyqs" class="modal-pane hidden space-y-6">
                     <div class="flex items-center justify-between bg-slate-850 p-3.5 rounded-xl border border-slate-800 text-xs">
-                        <span class="text-slate-400 flex items-center gap-2">
-                            <i class="fa-solid fa-certificate text-emerald-400"></i> Official ISC Class 12 Board Exam Pattern
-                        </span>
-                        <button onclick="toggleAllSolutions('pyqs')" class="text-emerald-400 font-semibold hover:underline">
-                            Toggle All Marking Scheme Answers
-                        </button>
+                        <span class="text-slate-400">ISC Class 12 Board Exam Pattern</span>
+                        <button onclick="toggleAllSolutions('pyqs')" class="text-emerald-400 font-semibold cursor-pointer">Toggle All Answers</button>
                     </div>
-
-                    <div id="pyqQuestionsContainer" class="space-y-4">
-                        <!-- Rendered by JS -->
-                    </div>
+                    <div id="pyqQuestionsContainer" class="space-y-4"></div>
                 </div>
-
-                <!-- TAB 3: EXPECTED QUESTIONS -->
                 <div id="tabContent-expected" class="modal-pane hidden space-y-6">
                     <div class="flex items-center justify-between bg-slate-850 p-3.5 rounded-xl border border-slate-800 text-xs">
-                        <span class="text-slate-400 flex items-center gap-2">
-                            <i class="fa-solid fa-arrow-trend-up text-amber-400"></i> High-Probability Board Exam Questions
-                        </span>
-                        <button onclick="toggleAllSolutions('expected')" class="text-emerald-400 font-semibold hover:underline">
-                            Toggle All Answers
-                        </button>
+                        <span class="text-slate-400">High-Probability Board Questions</span>
+                        <button onclick="toggleAllSolutions('expected')" class="text-emerald-400 font-semibold cursor-pointer">Toggle All Answers</button>
                     </div>
-
-                    <div id="expectedQuestionsContainer" class="space-y-4">
-                        <!-- Rendered by JS -->
+                    <div id="expectedQuestionsContainer" class="space-y-4"></div>
                     </div>
+                                    <div id="tabContent-visualmap" class="modal-pane hidden space-y-4">
+                    <div id="visualMindMapContainer"></div>
                 </div>
-
-                <!-- TAB 4: PRACTICE QUIZ -->
-                <div id="tabContent-quiz" class="modal-pane hidden space-y-6">
-                    <div id="quizHeaderCard" class="bg-slate-850 p-4 rounded-xl border border-slate-800 flex items-center justify-between">
+                <div id="tabContent-aiexpand" class="modal-pane hidden space-y-4">
+                    <div class="bg-slate-850 border border-purple-500/30 rounded-xl p-4 flex flex-wrap items-center justify-between gap-2">
                         <div>
-                            <span id="quizProgressLabel" class="text-xs text-slate-400 font-medium">Question 0 of 15</span>
-                            <h4 id="quizScoreTracker" class="text-sm font-bold text-white mt-0.5">Score: <span class="text-emerald-400">0</span> / 15</h4>
+                            <h4 class="text-sm font-bold text-white">AI Full Chapter Explanation</h4>
+                            <p class="text-xs text-slate-400">Complete chapter walkthrough via secure backend.</p>
                         </div>
-                        <button onclick="restartChapterQuiz()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-all flex items-center gap-1.5">
-                            <i class="fa-solid fa-rotate"></i> Restart Quiz
-                        </button>
+                        <button type="button" onclick="loadAiExpandedNote(true)" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-purple-500/20 text-purple-200 border border-purple-500/40 cursor-pointer">↻ Regenerate</button>
                     </div>
-
-                    <div id="quizContainer" class="space-y-4">
-                        <!-- Rendered by JS -->
-                    </div>
+                    <div id="aiExpandOutput" class="bg-slate-850/80 border border-slate-800 rounded-xl p-4 text-xs sm:text-sm text-slate-200 whitespace-pre-wrap"></div>
                 </div>
-
             </div>
-
         </div>
     </div>
-
-
-    <!-- ========================================== -->
-    <!--            APPLICATION JS SCRIPT           -->
-    <!-- ========================================== -->
     <script>
-        // GLOBAL APP STATE (MUST BE INITIALIZED FIRST)
-        const appState = {
-            currentSubject: "All Subjects",
-            searchQuery: "",
-            statusFilter: "all",
-            sortFilter: "default",
-            revisedChapterIds: new Set(),
-            activeModalChapterId: null,
-            activeTab: "mindmap"
-        };
-
-        const SUBJECTS_CONFIG = {
-            "Physics": { icon: "fa-atom", badgeColor: "bg-blue-500/10 text-blue-400 border-blue-500/20" },
-            "Chemistry": { icon: "fa-flask-vial", badgeColor: "bg-emerald-500/10 text-emerald-400 border-emerald-500/20" },
-            "Biology": { icon: "fa-dna", badgeColor: "bg-teal-500/10 text-teal-400 border-teal-500/20" },
-            "Mathematics": { icon: "fa-calculator", badgeColor: "bg-indigo-500/10 text-indigo-400 border-indigo-500/20" },
-            "Computer Science": { icon: "fa-code", badgeColor: "bg-purple-500/10 text-purple-400 border-purple-500/20" },
-            "Hindi": { icon: "fa-language", badgeColor: "bg-orange-500/10 text-orange-400 border-orange-500/20" },
-            "English Language": { icon: "fa-pen-nib", badgeColor: "bg-amber-500/10 text-amber-400 border-amber-500/20" },
-            "English Literature": { icon: "fa-book-open", badgeColor: "bg-rose-500/10 text-rose-400 border-rose-500/20" },
-            "Formula Sheet": { icon: "fa-square-root-variable", badgeColor: "bg-yellow-500/10 text-yellow-400 border-yellow-500/20" }
-        };
-
-        // ALL EXACT 79 ISC CLASS 12 CHAPTERS DATASET
-        const CHAPTERS_DATA = [
-            // --- PHYSICS (13 CHAPTERS) ---
-            { id: "phy-01", subject: "Physics", code: "PHY-01", title: "Electric Charges and Fields", topics: ["Coulomb's Law", "Electric Field Lines", "Gauss's Theorem", "Electric Dipole"] },
-            { id: "phy-02", subject: "Physics", code: "PHY-02", title: "Electrostatic Potential and Capacitance", topics: ["Potential Difference", "Equipotential Surfaces", "Capacitors in Series/Parallel", "Dielectrics"] },
-            { id: "phy-03", subject: "Physics", code: "PHY-03", title: "Current Electricity", topics: ["Ohm's Law", "Drift Velocity", "Kirchhoff's Laws", "Wheatstone Bridge & Potentiometer"] },
-            { id: "phy-04", subject: "Physics", code: "PHY-04", title: "Moving Charges and Magnetism", topics: ["Biot-Savart Law", "Ampere's Circuital Law", "Cyclotron", "Galvanometer to Ammeter/Voltmeter"] },
-            { id: "phy-05", subject: "Physics", code: "PHY-05", title: "Magnetism and Matter", topics: ["Bar Magnet as Dipole", "Earth's Magnetic Elements", "Dia, Para and Ferromagnetic Substances"] },
-            { id: "phy-06", subject: "Physics", code: "PHY-06", title: "Electromagnetic Induction", topics: ["Faraday's Laws of EMI", "Lenz's Law & Conservation", "Self & Mutual Inductance", "Eddy Currents"] },
-            { id: "phy-07", subject: "Physics", code: "PHY-07", title: "Alternating Current", topics: ["Peak & RMS Values", "LCR Series Circuit Resonance", "Power Factor", "Transformers"] },
-            { id: "phy-08", subject: "Physics", code: "PHY-08", title: "Electromagnetic Waves", topics: ["Displacement Current", "Maxwell's Equations", "EM Spectrum Characteristics & Uses"] },
-            { id: "phy-09", subject: "Physics", code: "PHY-09", title: "Ray Optics and Optical Instruments", topics: ["Refraction & Total Internal Reflection", "Lens Maker's Formula", "Prism Formula", "Microscopes & Telescopes"] },
-            { id: "phy-10", subject: "Physics", code: "PHY-10", title: "Wave Optics", topics: ["Huygens' Principle", "Young's Double Slit Experiment", "Diffraction at Single Slit", "Polarization"] },
-            { id: "phy-11", subject: "Physics", code: "PHY-11", title: "Atoms", topics: ["Rutherford's Alpha Scattering", "Bohr's Atomic Model", "Hydrogen Energy Spectrum Lines"] },
-            { id: "phy-12", subject: "Physics", code: "PHY-12", title: "Nuclei", topics: ["Nuclear Binding Energy Curve", "Mass Defect", "Nuclear Fission & Fusion Reactions"] },
-            { id: "phy-13", subject: "Physics", code: "PHY-13", title: "Semiconductor Electronics", topics: ["Intrinsic & Extrinsic Semiconductors", "p-n Junction Diode", "Rectifiers", "Zener Diode & LEDs"] },
-
-            // --- CHEMISTRY (10 CHAPTERS) ---
-            { id: "che-01", subject: "Chemistry", code: "CHE-01", title: "Solutions", topics: ["Raoult's Law", "Colligative Properties", "Osmotic Pressure", "Van't Hoff Factor"] },
-            { id: "che-02", subject: "Chemistry", code: "CHE-02", title: "Electrochemistry", topics: ["Nernst Equation", "Kohlrausch's Law", "Faraday's Laws", "Standard Hydrogen Electrode"] },
-            { id: "che-03", subject: "Chemistry", code: "CHE-03", title: "Chemical Kinetics", topics: ["Rate Law & Order", "Integrated Rate Equations", "Pseudo First Order", "Arrhenius Equation"] },
-            { id: "che-04", subject: "Chemistry", code: "CHE-04", title: "d- and f-Block Elements", topics: ["Transition Metal Properties", "Lanthanoid Contraction", "Potassium Permanganate & Dichromate"] },
-            { id: "che-05", subject: "Chemistry", code: "CHE-05", title: "Coordination Compounds", topics: ["Werner's Theory", "IUPAC Nomenclature", "Valence Bond Theory", "Crystal Field Theory"] },
-            { id: "che-06", subject: "Chemistry", code: "CHE-06", title: "Haloalkanes and Haloarenes", topics: ["SN1 vs SN2 Mechanisms", "Electrophilic Substitution in Haloarenes", "Grignard Reagents"] },
-            { id: "che-07", subject: "Chemistry", code: "CHE-07", title: "Alcohols, Phenols and Ethers", topics: ["Hydroboration-Oxidation", "Acidity of Phenols", "Reimer-Tiemann & Kolbe Reaction", "Williamson Synthesis"] },
-            { id: "che-08", subject: "Chemistry", code: "CHE-08", title: "Aldehydes, Ketones and Carboxylic Acids", topics: ["Nucleophilic Addition", "Aldol & Cannizzaro Reactions", "Tollens & Fehling Test", "HVZ Reaction"] },
-            { id: "che-09", subject: "Chemistry", code: "CHE-09", title: "Organic Compounds Containing Nitrogen", topics: ["Hoffmann Bromamide Degradation", "Gabriel Phthalimide Synthesis", "Diazonium Salt Reactions"] },
-            { id: "che-10", subject: "Chemistry", code: "CHE-10", title: "Biomolecules", topics: ["Glucose Ring Structure", "Peptide Bonds & Protein Structure", "DNA vs RNA Double Helix"] },
-
-            // --- BIOLOGY (10 CHAPTERS) ---
-            { id: "bio-01", subject: "Biology", code: "BIO-01", title: "Sexual Reproduction in Flowering Plants", topics: ["Microsporogenesis & Megasporogenesis", "Double Fertilization & Triple Fusion", "Apomixis & Polyembryony"] },
-            { id: "bio-02", subject: "Biology", code: "BIO-02", title: "Human Reproduction", topics: ["Spermatogenesis & Oogenesis", "Menstrual Cycle Hormones", "Implantation & Placenta Formation"] },
-            { id: "bio-03", subject: "Biology", code: "BIO-03", title: "Reproductive Health", topics: ["Contraceptive Techniques", "Infertility & ART (IVF, ZIFT, GIFT)", "Sexually Transmitted Diseases"] },
-            { id: "bio-04", subject: "Biology", code: "BIO-04", title: "Principles of Inheritance and Variation", topics: ["Mendel's Hybridization Laws", "Incomplete Dominance & Co-dominance", "Sex-Linked Genetic Disorders"] },
-            { id: "bio-05", subject: "Biology", code: "BIO-05", title: "Molecular Basis of Inheritance", topics: ["Structure of DNA & Replication", "Transcription Unit & Genetic Code", "Translation & Lac Operon"] },
-            { id: "bio-06", subject: "Biology", code: "BIO-06", title: "Evolution", topics: ["Origin of Life & Miller-Urey Experiment", "Adaptive Radiation & Homology", "Hardy-Weinberg Equilibrium"] },
-            { id: "bio-07", subject: "Biology", code: "BIO-07", title: "Human Health and Diseases", topics: ["Innate & Acquired Immunity", "Plasmodium Life Cycle", "Cancer & HIV Pathology"] },
-            { id: "bio-08", subject: "Biology", code: "BIO-08", title: "Microbes in Human Welfare", topics: ["Microbes in Household & Industrial Products", "Sewage Treatment Plant Steps", "Biocontrol & Biofertilizers"] },
-            { id: "bio-09", subject: "Biology", code: "BIO-09", title: "Biotechnology: Principles and Processes", topics: ["Restriction Endonucleases", "Recombinant DNA Vectors", "PCR Cycle & Gel Electrophoresis"] },
-            { id: "bio-10", subject: "Biology", code: "BIO-10", title: "Biotechnology and its Applications", topics: ["Bt Cotton & Cry Proteins", "RNA Interference (RNAi)", "Human Insulin & Gene Therapy"] },
-
-            // --- MATHEMATICS (11 CHAPTERS) ---
-            { id: "mat-01", subject: "Mathematics", code: "MAT-01", title: "Relations and Functions", topics: ["Reflexive, Symmetric & Transitive Relations", "One-One & Onto Functions", "Composite & Inverse Functions"] },
-            { id: "mat-02", subject: "Mathematics", code: "MAT-02", title: "Inverse Trigonometric Functions", topics: ["Principal Value Branches", "Domain & Range of Inverse Trig Functions", "Inverse Identities & Simplifications"] },
-            { id: "mat-03", subject: "Mathematics", code: "MAT-03", title: "Matrices", topics: ["Matrix Types & Operations", "Transpose & Symmetric/Skew-Symmetric", "Elementary Row Operations & Inverse Matrix"] },
-            { id: "mat-04", subject: "Mathematics", code: "MAT-04", title: "Determinants", topics: ["Properties of Determinants", "Minors, Cofactors & Adjoint", "Matrix Method for System of Linear Equations"] },
-            { id: "mat-05", subject: "Mathematics", code: "MAT-05", title: "Continuity and Differentiability", topics: ["Continuity at a Point", "Chain Rule & Implicit Differentiation", "Logarithmic & Parametric Differentiation", "Rolle's & Mean Value Theorems"] },
-            { id: "mat-06", subject: "Mathematics", code: "MAT-06", title: "Applications of Derivatives", topics: ["Rate of Change of Quantities", "Increasing & Decreasing Functions", "Tangents & Normals", "Maxima and Minima Word Problems"] },
-            { id: "mat-07", subject: "Mathematics", code: "MAT-07", title: "Integrals", topics: ["Indefinite Integration & Substitution", "Integration by Parts & Partial Fractions", "Definite Integral Properties"] },
-            { id: "mat-08", subject: "Mathematics", code: "MAT-08", title: "Applications of Integrals", topics: ["Area under Simple Curves", "Area Bounded by Line & Parabola/Circle", "Area Between Two Curves"] },
-            { id: "mat-09", subject: "Mathematics", code: "MAT-09", title: "Differential Equations", topics: ["Order and Degree", "Variable Separable Method", "Homogeneous Differential Equations", "Linear Differential Equations (Integrating Factor)"] },
-            { id: "mat-10", subject: "Mathematics", code: "MAT-10", title: "Vectors and 3D Geometry", topics: ["Dot & Cross Product of Vectors", "Direction Cosines & Ratios", "Equation of Line & Plane in Space", "Shortest Distance Between Skew Lines"] },
-            { id: "mat-11", subject: "Mathematics", code: "MAT-11", title: "Probability", topics: ["Conditional Probability", "Multiplication Theorem", "Bayes' Theorem & Total Probability", "Random Variables & Binomial Distribution"] },
-
-            // --- COMPUTER SCIENCE (JAVA) (8 CHAPTERS) ---
-            { id: "csc-01", subject: "Computer Science", code: "CSC-01", title: "Boolean Algebra", topics: ["Truth Tables & Boolean Laws", "De Morgan's Theorems", "SOP & POS Canonical Forms", "K-Map Simplification"] },
-            { id: "csc-02", subject: "Computer Science", code: "CSC-02", title: "Computer Hardware & Logic Gates", topics: ["Universal Gates (NAND/NOR)", "Encoders & Decoders", "Multiplexers & Half/Full Adders"] },
-            { id: "csc-03", subject: "Computer Science", code: "CSC-03", title: "Arrays & Strings in Java", topics: ["Single & Multi-dimensional Arrays", "Binary & Linear Search", "String Buffer & Tokenizer Methods"] },
-            { id: "csc-04", subject: "Computer Science", code: "CSC-04", title: "Recursion & Backtracking", topics: ["Base Case & Recursive Calls", "Call Stack Tracing", "Tail vs Non-Tail Recursion", "Tower of Hanoi"] },
-            { id: "csc-05", subject: "Computer Science", code: "CSC-05", title: "Linked Lists", topics: ["Singly Linked List Nodes", "Pointer Manipulation", "Insertion & Deletion at Head/Tail/Position"] },
-            { id: "csc-06", subject: "Computer Science", code: "CSC-06", title: "Stacks & Queues", topics: ["Stack Push & Pop Operations", "Queue Linear & Circular Enqueue/Dequeue", "Infix to Postfix Evaluation"] },
-            { id: "csc-07", subject: "Computer Science", code: "CSC-07", title: "Trees & Graphs", topics: ["Binary Tree Structure", "Inorder, Preorder, Postorder Traversals", "Graph Representation & BFS/DFS Concepts"] },
-            { id: "csc-08", subject: "Computer Science", code: "CSC-08", title: "Object-Oriented Programming & Complexity", topics: ["Classes, Objects & Data Abstraction", "Method Overloading & Overriding", "Inheritance & Polymorphism", "Big-O Analysis"] },
-
-            // --- HINDI (7 CHAPTERS) ---
-            { id: "hin-01", subject: "Hindi", code: "HIN-01", title: "Nibandh & Composition (निबंध लेखन)", topics: ["समसामयिक एवं सामाजिक विषय (Current & Social Essays)", "विचारात्मक एवं भावात्मक निबंध", "निबंध की रूपरेखा एवं भाषा-शैली"] },
-            { id: "hin-02", subject: "Hindi", code: "HIN-02", title: "Apathit Gadyansh (अपठित गद्यांश)", topics: ["गद्यांश का मूल भाव एवं शीर्षक", "बोधप्रश्न एवं व्याख्या (Comprehension Questions)", "शब्दार्थ एवं भाव पल्लवन"] },
-            { id: "hin-03", subject: "Hindi", code: "HIN-03", title: "Vyakaran & Patra-Lekhan (व्याकरण एवं पत्र-लेखन)", topics: ["अशुद्ध वाक्यों का शोधन (Sentence Correction)", "मुहावरे एवं कहावतें (Idioms & Proverbs)", "औपचारिक एवं अनौपचारिक पत्र-लेखन (Formal & Informal Letters)"] },
-            { id: "hin-04", subject: "Hindi", code: "HIN-04", title: "Gadya Sankalan - Kahaniyan Part 1 (गद्य संकलन - कहानियाँ भाग 1)", topics: ["कथावस्तु एवं उद्देश्य (Plot & Purpose)", "प्रमुख पात्रों का चरित्र-चित्रण (Character Sketches)", "संवाद सौंदर्य एवं भाषा शैली"] },
-            { id: "hin-05", subject: "Hindi", code: "HIN-05", title: "Gadya Sankalan - Kahaniyan Part 2 (गद्य संकलन - कहानियाँ भाग 2)", topics: ["सामाजिक एवं मनोवैज्ञानिक पहलू", "शीर्षक की सार्थकता (Significance of Title)", "सप्रसंग व्याख्या एवं बोध प्रश्न"] },
-            { id: "hin-06", subject: "Hindi", code: "HIN-06", title: "Kavya Manjari - Kabirdas & Surdas (काव्य मंजरी - कबीरदास एवं सूरदास)", topics: ["साखी एवं पद का भावार्थ", "भक्ति भावना एवं दर्शन", "काव्य-सौंदर्य एवं भाषा-शिल्प"] },
-            { id: "hin-07", subject: "Hindi", code: "HIN-07", title: "Kavya Manjari - Modern Poems (काव्य मंजरी - आधुनिक कविताएँ)", topics: ["राष्ट्रप्रेम एवं मानवीय संवेदनाएँ", "रस, छंद एवं अलंकार", "पद्यांश की व्याख्या एवं उत्तर"] },
-
-            // --- ENGLISH LANGUAGE (6 CHAPTERS) ---
-            { id: "eng-01", subject: "English Language", code: "ENG-01", title: "Directed Writing & Proposal Writing", topics: ["Statement of Purpose & Objectives", "Budget & Measures in Proposals", "Report Writing & Article Writing"] },
-            { id: "eng-02", subject: "English Language", code: "ENG-02", title: "Composition & Essay Techniques", topics: ["Narrative & Descriptive Essays", "Argumentative Stance", "Discursive & Reflective Writing"] },
-            { id: "eng-03", subject: "English Language", code: "ENG-03", title: "Comprehension & Summary Writing", topics: ["Vocabulary Context Clues", "Factual & Inferential Questions", "100-Word Précis Grid Writing"] },
-            { id: "eng-04", subject: "English Language", code: "ENG-04", title: "Grammar & Transformation of Sentences", topics: ["Active & Passive Voice Rules", "Direct & Indirect Speech Rules", "Degrees of Comparison & Conditionals"] },
-            { id: "eng-05", subject: "English Language", code: "ENG-05", title: "Prepositions & Phrasal Verbs", topics: ["Appropriate Prepositions", "Idiomatic Phrasal Verbs", "Sentence Completion Exercises"] },
-            { id: "eng-06", subject: "English Language", code: "ENG-06", title: "Functional Synthesis & Cloze", topics: ["Combining Sentences without Using 'And', 'But', 'So'", "Cloze Test Passage Completion"] },
-
-            // --- ENGLISH LITERATURE (11 CHAPTERS) ---
-            { id: "lit-m3", subject: "English Literature", code: "MAC-ACT3", title: "Macbeth - Act III", topics: ["Banquo's Soliloquy & Murder", "Escape of Fleance", "The Ghost at the Banquet", "Hecate & Witches Scene"] },
-            { id: "lit-m4", subject: "English Literature", code: "MAC-ACT4", title: "Macbeth - Act IV", topics: ["The Three Apparitions", "Slaughter of Macduff's Family", "Malcolm Tests Macduff in England"] },
-            { id: "lit-m5", subject: "English Literature", code: "MAC-ACT5", title: "Macbeth - Act V", topics: ["Lady Macbeth's Sleepwalking", "Birnam Wood Moves to Dunsinane", "Macduff's Birth Secret & Macbeth's Fall"] },
-            { id: "lit-p1", subject: "English Literature", code: "PRISM-01", title: "Prism: Atithi (Rabindranath Tagore)", topics: ["Tarapada's Spirit of Freedom", "Wanderlust vs Family Ties", "Character Contrast with Charushashi"] },
-            { id: "lit-p2", subject: "English Literature", code: "PRISM-02", title: "Prism: The Cookie Lady (Philip K. Dick)", topics: ["Mrs. Drew & Bernard", "Parasitic Youth Drain", "Atmosphere of Dark Fantasy"] },
-            { id: "lit-p3", subject: "English Literature", code: "PRISM-03", title: "Prism: There Will Come Soft Rains (Ray Bradbury)", topics: ["Automated Smart House", "Nuclear Post-Apocalypse", "Technology vs Nature's Power"] },
-            { id: "lit-p4", subject: "English Literature", code: "PRISM-04", title: "Prism: Indigo (Satyajit Ray)", topics: ["Aniruddha Bose at Dumka Bungalow", "Supernatural Memory of Eric Prescott", "Colonial Indigo Planters' Cruelty"] },
-            { id: "lit-p5", subject: "English Literature", code: "PRISM-05", title: "Prism: The Medicine Bag (Virginia Driving Hawk Sneve)", topics: ["Martin & Grandpa Joe", "Lakota Sioux Heritage", "Sacred Medicine Bag Symbolism"] },
-            { id: "lit-r1", subject: "English Literature", code: "RHAP-01", title: "Rhapsody: Telephone Conversation (Wole Soyinka)", topics: ["Racial Microaggression", "Satirical Irony & Wit", "West African Sepia Metaphor"] },
-            { id: "lit-r2", subject: "English Literature", code: "RHAP-02", title: "Rhapsody: Tithonus (Alfred Lord Tennyson)", topics: ["Dramatic Monologue", "Immortal Life without Eternal Youth", "Aurora the Dawn Goddess"] },
-            { id: "lit-r3", subject: "English Literature", code: "RHAP-03", title: "Rhapsody: Beethoven (Shane Koyczan)", topics: ["Spoken Word Poetry", "Overcoming Deafness through Art", "Relentless Creative Passion"] },
-            { id: "lit-r4", subject: "English Literature", code: "RHAP-04", title: "Rhapsody: Small Towns and the River (Mamang Dai)", topics: ["Arunachal Pradesh Landscape", "River as Living Eternal Entity", "Human Mortality vs Nature"] },
-            { id: "lit-r5", subject: "English Literature", code: "RHAP-05", title: "Rhapsody: Death Be Not Proud (John Donne)", topics: ["Holy Sonnet X", "Christian Defiance of Death", "Paradoxical Ending: 'Death, thou shalt die'"] },
-
-            // --- FORMULA SHEETS (3 DEDICATED CHAPTERS) ---
-            { id: "form-phy", subject: "Formula Sheet", code: "FORM-PHY", title: "Physics Formula Sheet", topics: ["Electrostatics & Capacitance", "Current & Magnetism Formulas", "Optics & Wave Optics Relations", "Modern Physics & Semiconductors"] },
-            { id: "form-che", subject: "Formula Sheet", code: "FORM-CHE", title: "Chemistry Formula Sheet", topics: ["Solutions & Colligative Equations", "Electrochemistry & Kinetics Expressions", "d-f Block & Coordination Formulas", "Organic Reaction Mechanisms & Reagents"] },
-            { id: "form-mat", subject: "Formula Sheet", code: "FORM-MAT", title: "Maths Formula Sheet", topics: ["Inverse Trig & Matrix Identities", "Calculus Differentiation & Integration Formulas", "Differential Equations & Integrals", "Vectors, 3D Geometry & Probability Formulas"] }
+        const STORAGE_KEY = 'examforge_isc12_revised_v1';
+        const AI_BACKEND_URL = 'https://YOUR-DEPLOYED-BACKEND-URL.com/api/expand-note';
+        const SUBJECTS = ['All Subjects', 'Physics', 'Chemistry', 'Biology', 'Computer Science', 'English Literature', 'Mathematics', 'Commerce', 'Accounts'];
+        const CHAPTER_SEED = [
+            ['PHY-01', 'Physics', 'Electric Charges and Fields'], ['PHY-02', 'Physics', 'Electrostatic Potential and Capacitance'],
+            ['PHY-03', 'Physics', 'Current Electricity'], ['PHY-04', 'Physics', 'Moving Charges and Magnetism'],
+            ['PHY-05', 'Physics', 'Magnetism and Matter'], ['PHY-06', 'Physics', 'Electromagnetic Induction'],
+            ['PHY-07', 'Physics', 'Alternating Current'], ['PHY-08', 'Physics', 'Electromagnetic Waves'],
+            ['PHY-09', 'Physics', 'Ray Optics and Optical Instruments'], ['PHY-10', 'Physics', 'Wave Optics'],
+            ['PHY-11', 'Physics', 'Dual Nature of Radiation and Matter'], ['PHY-12', 'Physics', 'Atoms'],
+            ['PHY-13', 'Physics', 'Nuclei'], ['PHY-14', 'Physics', 'Semiconductor Electronics'],
+            ['CHE-01', 'Chemistry', 'Solutions'], ['CHE-02', 'Chemistry', 'Electrochemistry'],
+            ['CHE-03', 'Chemistry', 'Chemical Kinetics'], ['CHE-04', 'Chemistry', 'd and f Block Elements'],
+            ['CHE-05', 'Chemistry', 'Coordination Compounds'], ['CHE-06', 'Chemistry', 'Haloalkanes and Haloarenes'],
+            ['CHE-07', 'Chemistry', 'Alcohols, Phenols and Ethers'], ['CHE-08', 'Chemistry', 'Aldehydes, Ketones and Carboxylic Acids'],
+            ['CHE-09', 'Chemistry', 'Amines'], ['CHE-10', 'Chemistry', 'Biomolecules'],
+            ['BIO-01', 'Biology', 'Sexual Reproduction in Flowering Plants'], ['BIO-02', 'Biology', 'Human Reproduction'],
+            ['BIO-03', 'Biology', 'Reproductive Health'], ['BIO-04', 'Biology', 'Principles of Inheritance and Variation'],
+            ['BIO-05', 'Biology', 'Molecular Basis of Inheritance'], ['BIO-06', 'Biology', 'Evolution'],
+            ['BIO-07', 'Biology', 'Human Health and Diseases'], ['BIO-08', 'Biology', 'Microbes in Human Welfare'],
+            ['BIO-09', 'Biology', 'Biotechnology: Principles and Processes'], ['BIO-10', 'Biology', 'Biotechnology and its Applications'],
+            ['BIO-11', 'Biology', 'Organisms and Populations'], ['BIO-12', 'Biology', 'Ecosystem'],
+            ['BIO-13', 'Biology', 'Biodiversity and Conservation'],
+            ['CS-01', 'Computer Science', 'Boolean Algebra & Logic Gates'], ['CS-02', 'Computer Science', 'Computer Hardware & Karnaugh Maps'],
+            ['CS-03', 'Computer Science', 'Java Fundamentals & Operators'], ['CS-04', 'Computer Science', 'Conditional & Iterative Constructs'],
+            ['CS-05', 'Computer Science', 'Methods, Overloading & Recursion'], ['CS-06', 'Computer Science', '1D and 2D Arrays in Java'],
+            ['CS-07', 'Computer Science', 'Strings & StringBuffer Manipulation'], ['CS-08', 'Computer Science', 'Object-Oriented Programming & Inheritance'],
+            ['CS-09', 'Computer Science', 'Data Structures: Stacks, Queues & Linked Lists'], ['CS-10', 'Computer Science', 'Computational Complexity & Sorting'],
+            ['ENG-01', 'English Literature', 'Macbeth — Act III'], ['ENG-02', 'English Literature', 'Macbeth — Act IV'],
+            ['ENG-03', 'English Literature', 'Macbeth — Act V'], ['ENG-04', 'English Literature', 'Atithi / Guest (Short Story)'],
+            ['ENG-05', 'English Literature', 'The Cookie Lady (Short Story)'], ['ENG-06', 'English Literature', 'There Will Come Soft Rains (Short Story)'],
+            ['ENG-07', 'English Literature', 'Indigo (Short Story)'], ['ENG-08', 'English Literature', 'The Medicine Bag (Short Story)'],
+            ['ENG-09', 'English Literature', 'Beethoven (Poem)'], ['ENG-10', 'English Literature', 'Small Towns and the River (Poem)'],
+            ['MAT-01', 'Mathematics', 'Relations and Functions'], ['MAT-02', 'Mathematics', 'Inverse Trigonometric Functions'],
+            ['MAT-03', 'Mathematics', 'Matrices and Determinants'], ['MAT-04', 'Mathematics', 'Continuity and Differentiability'],
+            ['MAT-05', 'Mathematics', 'Applications of Derivatives'], ['MAT-06', 'Mathematics', 'Integrals'],
+            ['MAT-07', 'Mathematics', 'Differential Equations'], ['MAT-08', 'Mathematics', 'Vectors and 3D Geometry'],
+            ['MAT-09', 'Mathematics', 'Probability'],
+            ['COM-01', 'Commerce', 'Business Environment'], ['COM-02', 'Commerce', 'Capital Market & Stock Exchange'],
+            ['COM-03', 'Commerce', 'Management Principles & Functions'], ['COM-04', 'Commerce', 'Marketing Mix & Consumer Protection'],
+            ['COM-05', 'Commerce', 'Planning & Organizing'], ['COM-06', 'Commerce', 'Staffing, Directing & Controlling'],
+            ['COM-07', 'Commerce', 'Financial Management & Working Capital'],
+            ['ACC-01', 'Accounts', 'Partnership Fundamentals'], ['ACC-02', 'Accounts', 'Goodwill & Reconstitution of Partnership'],
+            ['ACC-03', 'Accounts', 'Dissolution of a Partnership Firm'], ['ACC-04', 'Accounts', 'Accounting for Share Capital'],
+            ['ACC-05', 'Accounts', 'Accounting for Debentures'], ['ACC-06', 'Accounts', 'Financial Statement Analysis & Ratios']
         ];
-
-        /**
-         * CONTENT POPULATOR ENGINE
-         * Dynamically provides 4 mindmap nodes, 15 PYQs, 15 Expected Qs, and 15 Quiz MCQs per chapter.
-         */
-        function buildFullChapterData(ch) {
-            const data = JSON.parse(JSON.stringify(ch));
-
-            // Specialized Mindmaps for Formula Sheet vs Standard Subjects
-            if (ch.subject === "Formula Sheet") {
-                if (ch.id === "form-phy") {
-                    data.mindmap = [
-                        {
-                            title: "Electrostatics & Current Electricity",
-                            nodes: [
-                                "Coulomb's Law: F = (1 / 4πε₀) * (q₁q₂ / r²)",
-                                "Electric Field & Dipole: E = F/q; p = q * 2a; Torque τ = p × E",
-                                "Gauss's Law: Φ = ∮ E · dA = Q_enclosed / ε₀",
-                                "Capacitance: C = Q/V; Parallel Plate C = Kε₀A/d; Energy U = ½ CV²",
-                                "Ohm's & Drift Velocity: I = n A e v_d; v_d = eEτ/m; Resistivity ρ = m / (n e² τ)",
-                                "Kirchhoff's Laws: ∑ I = 0 (Junction); ∑ V = 0 (Loop)"
-                            ]
-                        },
-                        {
-                            title: "Magnetism & Electromagnetic Induction",
-                            nodes: [
-                                "Biot-Savart Law: dB = (μ₀/4π) * (I dl sinθ / r²)",
-                                "Ampere's Circuital Law: ∮ B · dl = μ₀ I_enclosed; Solenoid B = μ₀ n I",
-                                "Lorentz Force: F = q(E + v × B); Magnetic Dipole M = I A",
-                                "Faraday's & Lenz's Law: ε = - dΦ_B / dt; Motional EMF ε = B l v",
-                                "Inductance: Self Φ = L I (ε = - L dI/dt); Mutual Φ₂ = M I₁"
-                            ]
-                        },
-                        {
-                            title: "Alternating Current & Optics",
-                            nodes: [
-                                "AC RMS Values: I_rms = I₀ / √2 = 0.707 I₀; V_rms = V₀ / √2",
-                                "LCR Resonance: Z = √[R² + (X_L - X_C)²]; Resonant Frequency f_r = 1 / (2π √(LC))",
-                                "Lens Maker's Formula: 1/f = (μ - 1)(1/R₁ - 1/R₂)",
-                                "Prism Refraction: μ = sin[(A + D_m)/2] / sin(A/2)",
-                                "YDSE Fringe Width: β = λ D / d; Path Difference Δx = nλ (Bright), (2n-1)λ/2 (Dark)"
-                            ]
-                        },
-                        {
-                            title: "Modern Physics & Semiconductors",
-                            nodes: [
-                                "Photoelectric Effect: E = hν = W₀ + KE_max; KE_max = e V_stop",
-                                "de Broglie Wavelength: λ = h / p = h / √(2m eV)",
-                                "Bohr Radius & Energy: r_n = n² h² ε₀ / (π m e²); E_n = -13.6 / n² eV",
-                                "Nuclear Mass Defect & Binding Energy: Δm = [Z m_p + (A-Z) m_n] - M_nucleus; E_b = Δm * 931.5 MeV",
-                                "Semiconductor Carrier Density: n_i² = n_e * n_h"
-                            ]
-                        }
-                    ];
-                } else if (ch.id === "form-che") {
-                    data.mindmap = [
-                        {
-                            title: "Solutions & Electrochemistry",
-                            nodes: [
-                                "Raoult's Law: P_total = P°_A X_A + P°_B X_B; Relative lowering (P° - P)/P° = i * X_solute",
-                                "Colligative Properties: ΔT_b = i K_b m; ΔT_f = i K_f m; Osmotic Pressure π = i C R T",
-                                "Van't Hoff Factor: i = (Normal Molar Mass) / (Observed Molar Mass)",
-                                "Nernst Equation: E_cell = E°_cell - (0.0591 / n) log Q (at 298 K)",
-                                "Kohlrausch Law: Λ°_m = ν₊ λ°₊ + ν₋ λ°₋; Conductance G = 1/R = κ A / l"
-                            ]
-                        },
-                        {
-                            title: "Chemical Kinetics & Surface",
-                            nodes: [
-                                "Integrated Rate Law (1st Order): k = (2.303 / t) log([A]₀ / [A]_t); t_½ = 0.693 / k",
-                                "Zero Order Kinetics: [A]_t = [A]₀ - k t; t_½ = [A]₀ / (2k)",
-                                "Arrhenius Equation: k = A e^(-E_a / R T); log(k₂/k₁) = (E_a / 2.303R) [ (T₂ - T₁) / (T₁ T₂) ]"
-                            ]
-                        },
-                        {
-                            title: "Coordination & d-f Block",
-                            nodes: [
-                                "Magnetic Moment Formula: μ = √[n(n + 2)] BM (n = unpaired electrons)",
-                                "Crystal Field Splitting: Δ_o (Octahedral) vs Δ_t (Tetrahedral: Δ_t = 4/9 Δ_o)",
-                                "Effective Atomic Number (EAN): EAN = Z - (Oxidation State) + 2 * (Coordination Number)"
-                            ]
-                        },
-                        {
-                            title: "Organic Reactions & Named Reagents",
-                            nodes: [
-                                "Grignard Reagent: R-X + Mg (dry ether) -> R-MgX; R-MgX + H₂O -> R-H + Mg(OH)X",
-                                "Aldol Condensation: 2 R-CH₂CHO + dil. NaOH -> β-hydroxyaldehyde -> α,β-unsaturated aldehyde",
-                                "Cannizzaro Reaction: 2 HCHO + conc. KOH -> CH₃OH + HCOOK (Aldehydes with no α-H)",
-                                "Hoffmann Bromamide: R-CONH₂ + Br₂ + 4 KOH -> R-NH₂ + K₂CO₃ + 2 KBr + 2 H₂O"
-                            ]
-                        }
-                    ];
-                } else if (ch.id === "form-mat") {
-                    data.mindmap = [
-                        {
-                            title: "Inverse Trig, Matrices & Determinants",
-                            nodes: [
-                                "Inverse Trig Properties: sin⁻¹(x) + cos⁻¹(x) = π/2; tan⁻¹(x) + tan⁻¹(y) = tan⁻¹[(x+y)/(1-xy)]",
-                                "Matrix Inverse: A⁻¹ = (1 / |A|) * adj(A), provided |A| ≠ 0",
-                                "System of Equations: X = A⁻¹ B; Unique solution if |A| ≠ 0",
-                                "Determinants Property: |k A| = kⁿ |A| for n x n matrix; |A B| = |A| |B|"
-                            ]
-                        },
-                        {
-                            title: "Calculus - Differentiation & Application",
-                            nodes: [
-                                "Chain Rule & Parametric: dy/dx = (dy/dt) / (dx/dt)",
-                                "Logarithmic Diff: y = u(x)^v(x) => d/dx [ln y] = d/dx [v(x) ln u(x)]",
-                                "Tangent & Normal: Equation of Tangent: y - y₁ = m (x - x₁); Normal slope = -1/m",
-                                "Rolle's Theorem: f(a)=f(b) => ∃ c ∈ (a,b) s.t. f'(c) = 0"
-                            ]
-                        },
-                        {
-                            title: "Calculus - Integration & Differential Equations",
-                            nodes: [
-                                "Integration by Parts: ∫ u v dx = u ∫ v dx - ∫ [ u' (∫ v dx) ] dx",
-                                "Standard Integral: ∫ dx / (x² + a²) = (1/a) tan⁻¹(x/a) + C",
-                                "Definite Integral Property: ∫ₐᵇ f(x)dx = ∫ₐᵇ f(a + b - x)dx",
-                                "Linear Differential Eq: dy/dx + P(x)y = Q(x) => IF = e^(∫ P dx); Solution: y * IF = ∫ (Q * IF) dx + C"
-                            ]
-                        },
-                        {
-                            title: "Vectors, 3D Geometry & Probability",
-                            nodes: [
-                                "Vector Products: a · b = |a||b|cosθ; |a × b| = |a||b|sinθ",
-                                "Shortest Distance skew lines: d = | (a₂ - a₁) · (b₁ × b₂) | / | b₁ × b₂ |",
-                                "Bayes' Theorem: P(E_i | A) = [ P(E_i) P(A | E_i) ] / [ ∑ P(E_k) P(A | E_k) ]",
-                                "Binomial Distribution: P(X = r) = ⁿC_r p^r q^(n-r), where q = 1 - p"
-                            ]
-                        }
-                    ];
-                }
-            } else {
-                // Mindmap for standard academic subjects
-                data.mindmap = [
-                    {
-                        title: "Core Fundamentals & Focus",
-                        nodes: [
-                            `Key Concept: Master essential definitions and rules governing ${data.topics[0] || 'core topics'}.`,
-                            `Primary Definition: Be precise with technical terms and official ISC marking scheme phrasing.`,
-                            `Application Scope: Pay high attention to numerical formulas, textual quotes, or structural steps.`
-                        ]
-                    },
-                    {
-                        title: "High-Yield Marking Rules",
-                        nodes: [
-                            `Crucial Rule: Include required SI units, step-by-step logic, or explicit context citations for ${data.topics[1] || 'theoretical points'}.`,
-                            `Common Pitfall: Do not skip intermediate calculation or reasoning steps.`
-                        ]
-                    },
-                    {
-                        title: "ISC Exam Blueprint Tips",
-                        nodes: [
-                            `Section A: Expect 1-mark objective questions on basic definitions or direct sub-topics like ${data.topics[2] || 'key formulas'}.`,
-                            `Section B/C: Frequently tested long-answer derivations, proofs, or analytical responses.`
-                        ]
-                    },
-                    {
-                        title: "Exam Morning 2-Minute Recall",
-                        nodes: [
-                            `Instant Recall: Review core formulas, keywords, author context, or code syntax for ${data.title}.`,
-                            `Final Check: Keep answers structured in clear bullet points or step-by-step derivations.`
-                        ]
-                    }
-                ];
-            }
-
-            // 15 PYQs
-            data.pyqs = [];
-            for (let i = 1; i <= 15; i++) {
-                const sectionStr = i <= 5 ? "Section A (1 Mark)" : i <= 11 ? "Section B (2-3 Marks)" : "Section C (5 Marks)";
-                const topicItem = data.topics[(i - 1) % data.topics.length];
-                data.pyqs.push({
-                    section: sectionStr,
-                    q: `[ISC Board PYQ ${2024 - (i % 8)}] State and explain the fundamental principles/formulas of ${topicItem} in ${data.title}. What are the essential conditions or steps required under the official CISCE marking scheme?`,
-                    ans: `Official Marking Scheme Breakdown:\n1. State exact definition / theoretical premise of ${topicItem}.\n2. Write corresponding mathematical equation, formula derivation, or textual reference.\n3. Detail step-by-step evaluation or diagrammatic representation.`
-                });
-            }
-
-            // 15 Expected Questions
-            data.expected = [];
-            for (let i = 1; i <= 15; i++) {
-                const sectionStr = i <= 5 ? "Section A (1 Mark)" : i <= 11 ? "Section B (3 Marks)" : "Section C (5 Marks)";
-                const topicItem = data.topics[(i - 1) % data.topics.length];
-                data.expected.push({
-                    section: sectionStr,
-                    q: `[High Probability Board Expected] Analyze the key application or formula of ${topicItem} in ${data.title}. How should students structure their solution for maximum marks?`,
-                    ans: `Model Solution & Evaluator Notes:\n- Step 1: Explicitly identify the core formula, identity, or thematic premise of ${topicItem}.\n- Step 2: Highlight key logical steps, mechanisms, or algebraic substitutions.\n- Step 3: Conclude with standard final expression, units, or thesis statement.`
-                });
-            }
-
-            // 15 Quiz Questions
-            data.quiz = [];
-            for (let i = 1; i <= 15; i++) {
-                const topicItem = data.topics[(i - 1) % data.topics.length];
-                data.quiz.push({
-                    q: `Which of the following statements/formulas is ACCURATE regarding ${topicItem} in ${data.title}?`,
-                    opts: [
-                        `It strictly follows the standard principles governing ${topicItem} in the ISC Class 12 syllabus.`,
-                        `It contradicts the fundamental rules of ${data.subject} under standard conditions.`,
-                        `It applies exclusively to non-standard edge cases without general validity.`,
-                        `None of the options listed above are valid.`
-                    ],
-                    correct: 0,
-                    exp: `Option A is correct. ${topicItem} is a core syllabus element prescribed for ${data.title} in the official ISC Class 12 board curriculum.`
-                });
-            }
-
-            return data;
+        const CHAPTERS = CHAPTER_SEED.map(([id, subject, title]) => ({
+            id, subject, title,
+            mindMap: [
+                { step: '1', heading: 'Core Concepts & Definitions', points: [`Core definitions & syllabus scope of ${title}.`, 'Exact ISC terminology & units.'] },
+                { step: '2', heading: 'Key Principles & Themes', points: [`Governing rules or themes in ${title}.`, 'Clear cause-and-effect points.'] },
+                { step: '3', heading: 'Important Formulas & Cases', points: [`Key formulas, rules, or references in ${title}.`, 'Special cases & exam checkpoints.'] },
+                { step: '4', heading: 'Board Exam Pitfalls', points: ['Avoid missing units, steps, or keywords.', 'Write crisp point-wise board answers.'] }
+            ],
+            pyqs: Array.from({ length: 15 }, (_, i) => ({
+                q: `ISC PYQ #${i + 1} (${id}): Explain a core concept or application from "${title}".`,
+                ans: `State the rule/concept of "${title}" clearly, write step-wise reasoning/formula, and give the final result.`
+            })),
+            expected: Array.from({ length: 15 }, (_, i) => ({
+                q: `Expected Q #${i + 1} (${id}): Structured board question on "${title}".`,
+                ans: `Apply "${title}" principles systematically with exact ISC board keywords.`
+            }))
+        }));
+        let activeSubject = 'All Subjects', activeChapterId = null, revisedSet = new Set();
+        function escapeHtml(s) { return String(s || '').replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;' }[m])); }
+        function loadRevisedState() { try { const r = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'); if (Array.isArray(r)) revisedSet = new Set(r); } catch (_) {} }
+        function saveRevisedState() { try { localStorage.setItem(STORAGE_KEY, JSON.stringify(Array.from(revisedSet))); } catch (_) {} }
+        function showToast(msg) { const c = document.getElementById('toastContainer'); if (!c) return; const d = document.createElement('div'); d.className = 'px-4 py-2.5 rounded-xl bg-slate-850 border border-emerald-500/40 text-xs font-semibold text-emerald-300'; d.textContent = msg; c.appendChild(d); setTimeout(() => d.remove(), 2500); }
+        function updateGlobalStats() {
+            const total = CHAPTERS.length, rev = revisedSet.size, pct = total ? Math.round((rev / total) * 100) : 0;
+            const rc = document.getElementById('revisedCount'), tc = document.getElementById('totalCount'), pp = document.getElementById('progressPercent'), pc = document.getElementById('progressCircle');
+            if (rc) rc.textContent = String(rev); if (tc) tc.textContent = String(total); if (pp) pp.textContent = `${pct}%`;
+            if (pc) pc.style.strokeDashoffset = String(113 - (113 * pct) / 100);
         }
-
-        // INITIALIZATION FUNCTION (RAN ON DOM CONTENT LOADED)
-        function initApp() {
-            loadProgressFromStorage();
-            renderSubjectTabs();
-            renderChaptersGrid();
-            updateGlobalProgressUI();
-        }
-
-        function loadProgressFromStorage() {
-            try {
-                const saved = localStorage.getItem('examforge_isc12_revised');
-                if (saved) {
-                    const arr = JSON.parse(saved);
-                    appState.revisedChapterIds = new Set(arr);
-                }
-            } catch (e) {
-                console.warn("Unable to load localStorage progress", e);
-            }
-        }
-
-        function saveProgressToStorage() {
-            try {
-                localStorage.setItem('examforge_isc12_revised', JSON.stringify(Array.from(appState.revisedChapterIds)));
-            } catch (e) {
-                console.warn("Unable to save to localStorage", e);
-            }
-        }
-
-        function updateGlobalProgressUI() {
-            const total = CHAPTERS_DATA.length;
-            const revised = appState.revisedChapterIds.size;
-            const percent = total > 0 ? Math.round((revised / total) * 100) : 0;
-
-            document.getElementById('revisedCount').innerText = revised;
-            document.getElementById('totalCount').innerText = total;
-            document.getElementById('progressPercent').innerText = `${percent}%`;
-
-            const strokeDashoffset = 113 - (113 * percent / 100);
-            document.getElementById('progressCircle').style.strokeDashoffset = strokeDashoffset;
-        }
-
-        // SUBJECT TABS RENDER
         function renderSubjectTabs() {
-            const container = document.getElementById('subjectTabsContainer');
-            if (!container) return;
-
-            const subjects = ["All Subjects", ...Object.keys(SUBJECTS_CONFIG)];
-            
-            container.innerHTML = subjects.map(sub => {
-                const isActive = appState.currentSubject === sub;
-                const count = sub === "All Subjects" ? CHAPTERS_DATA.length : CHAPTERS_DATA.filter(c => c.subject === sub).length;
-                const iconClass = sub === "All Subjects" ? "fa-shapes" : SUBJECTS_CONFIG[sub].icon;
-                
-                return `
-                    <button onclick="selectSubject('${sub}')" class="px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all whitespace-nowrap ${
-                        isActive 
-                        ? 'bg-emerald-500 text-slate-950 font-bold shadow-md shadow-emerald-500/20' 
-                        : 'bg-slate-900/90 hover:bg-slate-800 text-slate-300 border border-slate-800'
-                    }">
-                        <i class="fa-solid ${iconClass}"></i>
-                        <span>${sub}</span>
-                        <span class="px-1.5 py-0.5 rounded-md text-[10px] ${isActive ? 'bg-slate-950/20 text-slate-950 font-bold' : 'bg-slate-800 text-slate-400'}">${count}</span>
-                    </button>
-                `;
-            }).join('');
+            const c = document.getElementById('subjectTabsContainer'); if (!c) return;
+            c.innerHTML = SUBJECTS.map((s) => `<button type="button" onclick="selectSubject('${s.replace(/'/g, "\\'")}')" class="px-3.5 py-1.5 rounded-xl text-xs font-semibold border whitespace-nowrap cursor-pointer ${activeSubject === s ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/50' : 'bg-slate-900/80 text-slate-400 border-slate-800'}">${s}</button>`).join('');
         }
-
-        function selectSubject(subject) {
-            appState.currentSubject = subject;
-            renderSubjectTabs();
-            renderChaptersGrid();
-        }
-
-        // CHAPTERS GRID RENDER
-        function renderChaptersGrid() {
-            const grid = document.getElementById('chaptersGrid');
-            const emptyState = document.getElementById('emptyState');
-            const bannerText = document.getElementById('activeSubjectCountText');
-
-            if (!grid) return;
-
-            let filtered = CHAPTERS_DATA.filter(ch => {
-                // Subject Filter
-                if (appState.currentSubject !== "All Subjects" && ch.subject !== appState.currentSubject) return false;
-                
-                // Status Filter
-                const isRevised = appState.revisedChapterIds.has(ch.id);
-                if (appState.statusFilter === "revised" && !isRevised) return false;
-                if (appState.statusFilter === "pending" && isRevised) return false;
-
-                // Search Filter
-                if (appState.searchQuery.trim() !== "") {
-                    const q = appState.searchQuery.toLowerCase();
-                    const titleMatch = ch.title.toLowerCase().includes(q);
-                    const codeMatch = ch.code.toLowerCase().includes(q);
-                    const topicMatch = ch.topics.some(t => t.toLowerCase().includes(q));
-                    return titleMatch || codeMatch || topicMatch;
-                }
-
-                return true;
-            });
-
-            // Sorting
-            if (appState.sortFilter === "title") {
-                filtered.sort((a, b) => a.title.localeCompare(b.title));
-            }
-
-            if (bannerText) {
-                bannerText.innerText = `Showing ${filtered.length} chapters ${appState.currentSubject === "All Subjects" ? "across all subjects" : `in ${appState.currentSubject}`}`;
-            }
-
-            if (filtered.length === 0) {
-                grid.innerHTML = "";
-                if (emptyState) emptyState.classList.remove('hidden');
-                return;
-            } else {
-                if (emptyState) emptyState.classList.add('hidden');
-            }
-
-            grid.innerHTML = filtered.map(ch => {
-                const isRevised = appState.revisedChapterIds.has(ch.id);
-                const badgeStyle = SUBJECTS_CONFIG[ch.subject]?.badgeColor || "bg-slate-800 text-slate-300";
-
-                return `
-                    <div class="glass-card rounded-2xl p-5 flex flex-col justify-between relative group border border-slate-800" onclick="openStudyModal('${ch.id}')">
-                        <div>
-                            <!-- Header Badges -->
-                            <div class="flex items-center justify-between gap-2 mb-3">
-                                <span class="px-2.5 py-1 rounded-lg text-[11px] font-bold ${badgeStyle} flex items-center gap-1.5">
-                                    <i class="fa-solid ${SUBJECTS_CONFIG[ch.subject]?.icon}"></i>
-                                    ${ch.subject}
-                                </span>
-                                
-                                <button onclick="toggleRevision('${ch.id}', event)" class="px-2.5 py-1 rounded-lg text-[11px] font-semibold transition-all flex items-center gap-1 ${
-                                    isRevised 
-                                    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/30' 
-                                    : 'bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700'
-                                }" title="Toggle Revision Status">
-                                    <i class="fa-solid ${isRevised ? 'fa-circle-check text-emerald-400' : 'fa-circle text-slate-500'}"></i>
-                                    <span>${isRevised ? 'Revised' : 'Pending'}</span>
-                                </button>
-                            </div>
-
-                            <!-- Title -->
-                            <div class="mb-3">
-                                <span class="text-[10px] font-mono text-slate-500 uppercase tracking-wider">${ch.code}</span>
-                                <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors leading-snug">${ch.title}</h3>
-                            </div>
-
-                            <!-- Topics -->
-                            <div class="flex flex-wrap gap-1.5 mb-4">
-                                ${ch.topics.map(t => `<span class="px-2 py-0.5 rounded-md text-[10px] bg-slate-900/90 text-slate-400 border border-slate-800/80">${t}</span>`).join('')}
-                            </div>
-                        </div>
-
-                        <!-- Footer -->
-                        <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
-                            <div class="text-[11px] text-slate-400 font-medium flex items-center gap-1.5">
-                                <i class="fa-solid fa-layer-group text-emerald-400"></i>
-                                <span>45+ Practice Qs</span>
-                            </div>
-
-                            <button onclick="openStudyModal('${ch.id}')" class="px-3 py-1.5 rounded-xl bg-emerald-500/10 hover:bg-emerald-500 text-emerald-400 hover:text-slate-950 border border-emerald-500/20 font-bold text-xs transition-all flex items-center gap-1.5">
-                                <span>Study Hub</span>
-                                <i class="fa-solid fa-arrow-right text-[10px]"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function toggleRevision(chId, event) {
-            if (event) event.stopPropagation();
-
-            if (appState.revisedChapterIds.has(chId)) {
-                appState.revisedChapterIds.delete(chId);
-                showToast("Chapter marked as pending revision", "info");
-            } else {
-                appState.revisedChapterIds.add(chId);
-                showToast("Chapter marked as revised! 🎉", "success");
-            }
-
-            saveProgressToStorage();
-            updateGlobalProgressUI();
-            renderChaptersGrid();
-
-            if (appState.activeModalChapterId === chId) {
-                updateModalRevisionButton();
-            }
-        }
-
-        // SEARCH & FILTER HANDLERS
-        function handleSearch() {
-            const val = document.getElementById('searchInput').value;
-            appState.searchQuery = val;
-            document.getElementById('clearSearchBtn').classList.toggle('hidden', val.length === 0);
-            renderChaptersGrid();
-        }
-
-        function clearSearch() {
-            document.getElementById('searchInput').value = "";
-            appState.searchQuery = "";
-            document.getElementById('clearSearchBtn').classList.add('hidden');
-            renderChaptersGrid();
-        }
-
+        function selectSubject(s) { activeSubject = s; renderSubjectTabs(); filterChapters(); }
+        function handleSearch() { const i = document.getElementById('searchInput'), b = document.getElementById('clearSearchBtn'); if (b && i) b.classList.toggle('hidden', !i.value.trim()); filterChapters(); }
+        function clearSearch() { const i = document.getElementById('searchInput'); if (i) i.value = ''; handleSearch(); }
+        function resetFilters() { activeSubject = 'All Subjects'; ['searchInput', 'statusFilter', 'sortFilter'].forEach((id) => { const el = document.getElementById(id); if (el) el.value = id === 'statusFilter' ? 'all' : (id === 'sortFilter' ? 'default' : ''); }); renderSubjectTabs(); filterChapters(); }
         function filterChapters() {
-            appState.statusFilter = document.getElementById('statusFilter').value;
-            appState.sortFilter = document.getElementById('sortFilter').value;
-            renderChaptersGrid();
+            const q = (document.getElementById('searchInput')?.value || '').trim().toLowerCase(), st = document.getElementById('statusFilter')?.value || 'all', so = document.getElementById('sortFilter')?.value || 'default';
+            let list = CHAPTERS.filter((ch) => (activeSubject === 'All Subjects' || ch.subject === activeSubject) && (st === 'all' || (st === 'revised' && revisedSet.has(ch.id)) || (st === 'pending' && !revisedSet.has(ch.id))) && (!q || ch.title.toLowerCase().includes(q) || ch.subject.toLowerCase().includes(q) || ch.id.toLowerCase().includes(q)));
+            if (so === 'title') list = [...list].sort((a, b) => a.title.localeCompare(b.title));
+            const ct = document.getElementById('activeSubjectCountText'); if (ct) ct.textContent = `Showing ${list.length} chapters`;
+            const g = document.getElementById('chaptersGrid'), e = document.getElementById('emptyState'); if (!g || !e) return;
+            if (!list.length) { g.innerHTML = ''; e.classList.remove('hidden'); return; }
+            e.classList.add('hidden');
+            g.innerHTML = list.map((ch) => { const done = revisedSet.has(ch.id); return `<article onclick="openStudyModal('${ch.id}')" class="glass-card rounded-2xl p-5 cursor-pointer flex flex-col justify-between gap-4"><div><div class="flex items-center justify-between gap-2 mb-3"><span class="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">${escapeHtml(ch.subject)}</span><span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full ${done ? 'bg-emerald-500/20 text-emerald-300' : 'bg-slate-800 text-slate-400'}">${done ? '✓ Revised' : '⏳ Pending'}</span></div><div class="text-xs font-mono text-slate-500 mb-1">${escapeHtml(ch.id)}</div><h3 class="text-base font-bold text-white">${escapeHtml(ch.title)}</h3></div><div class="pt-3 border-t border-slate-800/80 flex justify-between text-xs text-slate-400"><span>Mind Map • 15 PYQs • AI Note</span><span class="text-emerald-400 font-semibold">Open →</span></div></article>`; }).join('');
         }
-
-        function resetFilters() {
-            document.getElementById('searchInput').value = "";
-            document.getElementById('statusFilter').value = "all";
-            document.getElementById('sortFilter').value = "default";
-            appState.searchQuery = "";
-            appState.statusFilter = "all";
-            appState.sortFilter = "default";
-            appState.currentSubject = "All Subjects";
-            renderSubjectTabs();
-            renderChaptersGrid();
-        }
-
-        // STUDY HUB MODAL LOGIC
-        function openStudyModal(chId) {
-            const raw = CHAPTERS_DATA.find(c => c.id === chId);
-            if (!raw) return;
-
-            const ch = buildFullChapterData(raw);
-            appState.activeModalChapterId = chId;
-
-            document.getElementById('modalSubjectBadge').innerText = ch.subject;
-            document.getElementById('modalSubjectBadge').className = `px-2.5 py-1 rounded-lg text-xs font-bold ${SUBJECTS_CONFIG[ch.subject]?.badgeColor || ''} uppercase tracking-wider`;
-            document.getElementById('modalChapterTitle').innerText = `${ch.code}: ${ch.title}`;
-            document.getElementById('modalChapterSubtitle').innerText = `ISC Class 12 Syllabus Mastery Hub`;
-
-            document.getElementById('badge-pyqs').innerText = `${ch.pyqs.length}`;
-            document.getElementById('badge-expected').innerText = `${ch.expected.length}`;
-            document.getElementById('badge-quiz').innerText = `${ch.quiz.length}`;
-
-            updateModalRevisionButton();
-            renderMindMapTab(ch);
-            renderPYQsTab(ch);
-            renderExpectedTab(ch);
-            renderQuizTab(ch);
-
-            switchTab('mindmap');
-
+        function openStudyModal(id) {
+            const ch = CHAPTERS.find((x) => x.id === id); if (!ch) return; activeChapterId = ch.id;
+            document.getElementById('modalSubjectBadge').textContent = ch.subject;
+            document.getElementById('modalChapterTitle').textContent = `${ch.id}: ${ch.title}`;
+            syncModalReviseButton();
+            document.getElementById('mindmapNodesGrid').innerHTML = ch.mindMap.map((n) => `<div class="bg-slate-850/90 border border-slate-800 rounded-xl p-4"><div class="flex items-center gap-2 mb-2"><span class="w-6 h-6 rounded-md bg-emerald-500/15 text-emerald-400 text-xs font-bold flex items-center justify-center">${escapeHtml(n.step)}</span><h5 class="text-sm font-bold text-white">${escapeHtml(n.heading)}</h5></div><ul class="space-y-1 text-xs text-slate-300 list-disc pl-5">${n.points.map((p) => `<li>${escapeHtml(p)}</li>`).join('')}</ul></div>`).join('');
+            const mkQ = (items) => items.map((it) => `<div class="bg-slate-850/80 border border-slate-800 rounded-xl p-4 space-y-2"><p class="text-xs sm:text-sm font-semibold text-white">${escapeHtml(it.q)}</p><button type="button" onclick="toggleSingleAnswer(this)" class="text-[11px] font-semibold text-emerald-400 cursor-pointer">Show Marking Scheme Answer</button><div class="ef-answer-box hidden text-xs text-slate-300 bg-slate-900 rounded-lg p-3">${escapeHtml(it.ans)}</div></div>`).join('');
+            document.getElementById('pyqQuestionsContainer').innerHTML = mkQ(ch.pyqs);
+            document.getElementById('expectedQuestionsContainer').innerHTML = mkQ(ch.expected);
             document.getElementById('studyModal').classList.remove('hidden');
-            document.body.style.overflow = 'hidden';
+            switchTab('mindmap');
         }
-
-        function closeStudyModal() {
-            document.getElementById('studyModal').classList.add('hidden');
-            document.body.style.overflow = 'auto';
-            appState.activeModalChapterId = null;
+        function closeStudyModal() { document.getElementById('studyModal').classList.add('hidden'); activeChapterId = null; }
+        function syncModalReviseButton() {
+            const b = document.getElementById('modalReviseBtn'), t = document.getElementById('modalReviseText'); if (!b || !t || !activeChapterId) return;
+            const done = revisedSet.has(activeChapterId);
+            b.className = `px-3.5 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-2 border cursor-pointer ${done ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' : 'bg-slate-800 text-slate-300 border-slate-700'}`;
+            t.textContent = done ? 'Revised ✓' : 'Mark as Revised';
         }
-
-        function updateModalRevisionButton() {
-            const isRevised = appState.revisedChapterIds.has(appState.activeModalChapterId);
-            const btn = document.getElementById('modalReviseBtn');
-            const txt = document.getElementById('modalReviseText');
-
-            if (isRevised) {
-                btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all bg-emerald-500 text-slate-950 shadow-lg shadow-emerald-500/20";
-                txt.innerText = "Revised ✓";
-            } else {
-                btn.className = "px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700";
-                txt.innerText = "Mark as Revised";
-            }
-        }
-
         function toggleModalRevision() {
-            if (appState.activeModalChapterId) {
-                toggleRevision(appState.activeModalChapterId);
+            if (!activeChapterId) return;
+            if (revisedSet.has(activeChapterId)) revisedSet.delete(activeChapterId); else revisedSet.add(activeChapterId);
+            saveRevisedState(); syncModalReviseButton(); updateGlobalStats(); filterChapters(); showToast('Progress updated');
+        }
+        function toggleSingleAnswer(btn) { const box = btn.nextElementSibling; if (!box) return; const h = box.classList.contains('hidden'); box.classList.toggle('hidden', !h); btn.textContent = h ? 'Hide Marking Scheme Answer' : 'Show Marking Scheme Answer'; }
+        function toggleAllSolutions(type) { const id = type === 'pyqs' ? 'pyqQuestionsContainer' : 'expectedQuestionsContainer'; const boxes = document.querySelectorAll(`#${id} .ef-answer-box`); const anyH = Array.from(boxes).some((b) => b.classList.contains('hidden')); boxes.forEach((b) => b.classList.toggle('hidden', !anyH)); }
+        function switchTab(tab) {
+            document.querySelectorAll('.modal-pane').forEach((p) => p.classList.add('hidden'));
+            document.getElementById(`tabContent-${tab}`)?.classList.remove('hidden');
+            document.querySelectorAll('.modal-tab-btn').forEach((b) => { b.classList.remove('border-emerald-400', 'text-emerald-400'); if (b.id !== 'tabBtn-aiexpand') b.classList.add('border-transparent', 'text-slate-400'); });
+            const ab = document.getElementById(`tabBtn-${tab}`); if (ab && tab !== 'aiexpand') { ab.classList.remove('border-transparent', 'text-slate-400'); ab.classList.add('border-emerald-400', 'text-emerald-400'); }
+            if (tab === 'visualmap') renderChapterVisualMindMap();
+            if (tab === 'aiexpand') loadAiExpandedNote(false);
+        }
+        function renderChapterVisualMindMap() {
+            const c = document.getElementById('visualMindMapContainer'); if (!c) return;
+            const ch = CHAPTERS.find((x) => x.id === activeChapterId);
+            const title = ch ? `${ch.id}: ${ch.title}` : 'Chapter Mind Map', subj = ch ? ch.subject : 'ISC Class 12';
+            const pts = ch ? ch.mindMap.flatMap((n) => n.points) : [];
+            const pick = (i, n, fb) => (pts.slice(i, i + n).length ? pts.slice(i, i + n) : fb);
+            const cards = [
+                { tone: 'ef-tone-sage', t: '📘 Core Concepts', items: pick(0, 2, ['Core syllabus concepts', 'Key definitions']) },
+                { tone: 'ef-tone-rose', t: '⚡ Laws & Themes', items: pick(2, 2, ['Governing rules & themes', 'Key linkages']) },
+                { tone: 'ef-tone-sky', t: '🔍 Analysis', items: pick(4, 2, ['Step-by-step explanation', 'Board reasoning points']) },
+                { tone: 'ef-tone-lilac', t: '🧭 Context', items: ['Syllabus context & conditions', 'Special cases & exceptions'] },
+                { tone: 'ef-tone-peach', t: '🧩 Key Elements', items: [`Main components of ${title}`, 'High-weightage sub-topics'] },
+                { tone: 'ef-tone-amber', t: '📐 Formulas & Rules', items: ['Key formulas, laws & syntax', 'Standard notation'] },
+                { tone: 'ef-tone-mint', t: '🎯 Exam Focus', items: ['Repeated PYQ focus areas', 'Avoid common exam mistakes'] }
+            ];
+            const mk = (b) => `<div class="ef-mm-card ${b.tone}"><h4 class="ef-mm-card-title">${escapeHtml(b.t)}</h4><ul class="ef-mm-card-list">${b.items.map((x) => `<li>${escapeHtml(x)}</li>`).join('')}</ul></div>`;
+            c.innerHTML = `<div class="ef-mm-canvas"><div class="flex justify-between items-center mb-4 pb-2 border-b border-dashed border-stone-400/50"><span class="text-xs font-bold px-3 py-1 rounded-full bg-purple-100 text-purple-900 border border-purple-400">🧠 ${escapeHtml(subj)} • Visual Mind Map</span><button type="button" onclick="window.print()" class="text-xs font-semibold px-3 py-1.5 rounded-lg bg-white text-stone-800 border border-stone-300 cursor-pointer">Print</button></div><div class="ef-mm-grid">${mk(cards[0])}${mk(cards[1])}${mk(cards[2])}${mk(cards[3])}<div class="ef-mm-center-cloud"><h3 class="ef-mm-center-title">${escapeHtml(title)}</h3><p class="ef-mm-center-sub">${escapeHtml(subj)} • ISC Class 12</p></div>${mk(cards[4])}${mk(cards[5])}<div class="ef-mm-card ef-tone-lilac text-center flex flex-col justify-center"><h4 class="ef-mm-card-title">🔗 Revision Flow</h4><p class="ef-mm-card-list" style="list-style:none;padding:0;">Concept ➔ Rule ➔ Formula ➔ Answer</p></div>${mk(cards[6])}</div><div class="ef-mm-takeaway">💡 Key Takeaway: Revise core concepts, rules, and board keywords together for ${escapeHtml(title)}.</div></div>`;
+        }
+        async function loadAiExpandedNote(force = false) {
+            const out = document.getElementById('aiExpandOutput'); if (!out) return;
+            const ch = CHAPTERS.find((x) => x.id === activeChapterId); if (!ch) return;
+            const key = `examforge_ai_note_v1_${ch.id}`;
+            if (!force && localStorage.getItem(key)) { out.textContent = localStorage.getItem(key); return; }
+            if (!AI_BACKEND_URL || AI_BACKEND_URL.includes('YOUR-DEPLOYED-BACKEND-URL')) { out.innerHTML = '<span class="text-amber-300">Set <code>AI_BACKEND_URL</code> to your deployed backend URL first.</span>'; return; }
+            out.innerHTML = `<span class="text-purple-300">Generating explanation for ${escapeHtml(ch.title)}...</span>`;
+            try {
+                const res = await fetch(AI_BACKEND_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: ch.subject, chapterTitle: `${ch.id}: ${ch.title}` }) });
+                const data = await res.json().catch(() => ({}));
+                if (!res.ok || !data.explanation) throw new Error(data.error || `Error ${res.status}`);
+                localStorage.setItem(key, data.explanation);
+                out.textContent = data.explanation;
+            } catch (e) {
+                out.innerHTML = `<span class="text-rose-400">Error: ${escapeHtml(e.message)}</span>`;
             }
         }
-
-        function switchTab(tabKey) {
-            appState.activeTab = tabKey;
-
-            document.querySelectorAll('.modal-tab-btn').forEach(btn => {
-                btn.classList.remove('border-emerald-400', 'text-emerald-400');
-                btn.classList.add('border-transparent', 'text-slate-400');
-            });
-
-            const activeBtn = document.getElementById(`tabBtn-${tabKey}`);
-            if (activeBtn) {
-                activeBtn.classList.remove('border-transparent', 'text-slate-400');
-                activeBtn.classList.add('border-emerald-400', 'text-emerald-400');
-            }
-
-            document.querySelectorAll('.modal-pane').forEach(pane => pane.classList.add('hidden'));
-            const activePane = document.getElementById(`tabContent-${tabKey}`);
-            if (activePane) activePane.classList.remove('hidden');
-        }
-
-        // RENDER MODAL TABS CONTENT
-        function renderMindMapTab(ch) {
-            const container = document.getElementById('mindmapNodesGrid');
-            if (!container) return;
-
-            container.innerHTML = ch.mindmap.map((sec, idx) => `
-                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 shadow-sm relative">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 text-xs font-bold flex items-center justify-center">${idx + 1}</span>
-                        <h4 class="text-sm font-bold text-white">${sec.title}</h4>
-                    </div>
-                    <ul class="space-y-2">
-                        ${sec.nodes.map(n => `
-                            <li class="text-xs text-slate-300 flex items-start gap-2 bg-slate-900/80 p-2.5 rounded-lg border border-slate-800/60 font-mono">
-                                <i class="fa-solid fa-angle-right text-emerald-400 mt-0.5"></i>
-                                <span>${n}</span>
-                            </li>
-                        `).join('')}
-                    </ul>
-                </div>
-            `).join('');
-        }
-
-        function renderPYQsTab(ch) {
-            const container = document.getElementById('pyqQuestionsContainer');
-            if (!container) return;
-
-            container.innerHTML = ch.pyqs.map((q, idx) => `
-                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 space-y-3">
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-md">${q.section}</span>
-                        <span class="text-slate-500 font-mono">Question ${idx + 1} of 15</span>
-                    </div>
-                    <p class="text-sm font-medium text-slate-200 leading-relaxed">${q.q}</p>
-
-                    <div class="pt-1">
-                        <button onclick="toggleAnswer('pyq-ans-${idx}')" class="text-xs text-slate-400 hover:text-emerald-400 font-semibold flex items-center gap-1.5 transition-colors">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Show Marking Scheme Solution</span>
-                        </button>
-                        <div id="pyq-ans-${idx}" class="hidden mt-3 p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 font-mono leading-relaxed whitespace-pre-line">
-                            <div class="text-emerald-400 font-bold mb-1">Official Marking Breakdown:</div>
-                            ${q.ans}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function renderExpectedTab(ch) {
-            const container = document.getElementById('expectedQuestionsContainer');
-            if (!container) return;
-
-            container.innerHTML = ch.expected.map((q, idx) => `
-                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 space-y-3">
-                    <div class="flex items-center justify-between text-xs">
-                        <span class="font-bold text-amber-400 bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-md">${q.section}</span>
-                        <span class="text-slate-500 font-mono">Prediction ${idx + 1} of 15</span>
-                    </div>
-                    <p class="text-sm font-medium text-slate-200 leading-relaxed">${q.q}</p>
-
-                    <div class="pt-1">
-                        <button onclick="toggleAnswer('exp-ans-${idx}')" class="text-xs text-slate-400 hover:text-emerald-400 font-semibold flex items-center gap-1.5 transition-colors">
-                            <i class="fa-solid fa-eye"></i>
-                            <span>Show Model Solution</span>
-                        </button>
-                        <div id="exp-ans-${idx}" class="hidden mt-3 p-3 bg-slate-900 border border-slate-800 rounded-lg text-xs text-slate-300 font-mono leading-relaxed whitespace-pre-line">
-                            <div class="text-amber-400 font-bold mb-1">Expected Answer Points:</div>
-                            ${q.ans}
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // QUIZ STATE
-        let quizState = { currentScore: 0, answered: new Set() };
-
-        function renderQuizTab(ch) {
-            const container = document.getElementById('quizContainer');
-            quizState = { currentScore: 0, answered: new Set() };
-            updateQuizScoreUI(ch.quiz.length);
-
-            if (!container) return;
-
-            container.innerHTML = ch.quiz.map((q, idx) => `
-                <div class="bg-slate-850 border border-slate-800 rounded-xl p-4 space-y-4">
-                    <div class="flex items-start justify-between gap-3">
-                        <span class="w-6 h-6 rounded-lg bg-emerald-500/10 text-emerald-400 text-xs font-bold flex items-center justify-center shrink-0 mt-0.5">${idx + 1}</span>
-                        <p class="text-sm font-semibold text-white flex-1">${q.q}</p>
-                    </div>
-
-                    <div class="grid grid-cols-1 gap-2 pl-9">
-                        ${q.opts.map((opt, oIdx) => `
-                            <button onclick="handleOptionSelect(${idx}, ${oIdx}, ${q.correct}, '${encodeURIComponent(q.exp)}')" class="quiz-opt-btn-${idx} w-full text-left p-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-300 border border-slate-800 text-xs font-medium transition-all flex items-center justify-between">
-                                <span>${String.fromCharCode(65 + oIdx)}. ${opt}</span>
-                                <i class="fa-regular fa-circle text-slate-600 status-icon"></i>
-                            </button>
-                        `).join('')}
-                    </div>
-
-                    <div id="quiz-exp-${idx}" class="hidden pl-9 pt-2 text-xs font-mono text-slate-400 border-t border-slate-800/80 mt-2">
-                        <span class="text-emerald-400 font-bold">Explanation:</span> <span id="quiz-exp-text-${idx}"></span>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function handleOptionSelect(qIdx, selectedIdx, correctIdx, expEncoded) {
-            if (quizState.answered.has(qIdx)) return;
-            quizState.answered.add(qIdx);
-
-            const exp = decodeURIComponent(expEncoded);
-            const btns = document.querySelectorAll(`.quiz-opt-btn-${qIdx}`);
-
-            btns.forEach((btn, idx) => {
-                btn.disabled = true;
-                const icon = btn.querySelector('.status-icon');
-
-                if (idx === correctIdx) {
-                    btn.classList.remove('bg-slate-900', 'border-slate-800');
-                    btn.classList.add('bg-emerald-500/20', 'text-emerald-400', 'border-emerald-500/40', 'font-bold');
-                    if (icon) icon.className = "fa-solid fa-circle-check text-emerald-400";
-                } else if (idx === selectedIdx && selectedIdx !== correctIdx) {
-                    btn.classList.remove('bg-slate-900', 'border-slate-800');
-                    btn.classList.add('bg-rose-500/20', 'text-rose-400', 'border-rose-500/40');
-                    if (icon) icon.className = "fa-solid fa-circle-xmark text-rose-400";
-                }
-            });
-
-            if (selectedIdx === correctIdx) {
-                quizState.currentScore++;
-                showToast("Correct Answer! +1", "success");
-            } else {
-                showToast("Incorrect answer", "error");
-            }
-
-            const expContainer = document.getElementById(`quiz-exp-${qIdx}`);
-            const expText = document.getElementById(`quiz-exp-text-${qIdx}`);
-            if (expContainer && expText) {
-                expText.innerText = exp;
-                expContainer.classList.remove('hidden');
-            }
-
-            const raw = CHAPTERS_DATA.find(c => c.id === appState.activeModalChapterId);
-            if (raw) updateQuizScoreUI(raw.quiz ? raw.quiz.length : 15);
-        }
-
-        function updateQuizScoreUI(totalQ) {
-            const tracker = document.getElementById('quizScoreTracker');
-            const label = document.getElementById('quizProgressLabel');
-            if (tracker) tracker.innerHTML = `Score: <span class="text-emerald-400">${quizState.currentScore}</span> / ${totalQ}`;
-            if (label) label.innerText = `Answered ${quizState.answered.size} of ${totalQ}`;
-        }
-
-        function restartChapterQuiz() {
-            const raw = CHAPTERS_DATA.find(c => c.id === appState.activeModalChapterId);
-            if (raw) {
-                const ch = buildFullChapterData(raw);
-                renderQuizTab(ch);
-            }
-        }
-
-        function toggleAnswer(id) {
-            const el = document.getElementById(id);
-            if (el) el.classList.toggle('hidden');
-        }
-
-        function toggleAllSolutions(paneKey) {
-            const pane = document.getElementById(`tabContent-${paneKey}`);
-            if (!pane) return;
-            const answers = pane.querySelectorAll('[id^="pyq-ans-"], [id^="exp-ans-"]');
-            const allHidden = Array.from(answers).every(a => a.classList.contains('hidden'));
-
-            answers.forEach(a => {
-                if (allHidden) a.classList.remove('hidden');
-                else a.classList.add('hidden');
-            });
-        }
-
-        // UTILITY FUNCTIONS
-        function showToast(message, type = "info") {
-            const container = document.getElementById('toastContainer');
-            if (!container) return;
-
-            const toast = document.createElement('div');
-            const bgClass = type === "success" ? "bg-emerald-600 text-slate-950 font-bold" :
-                            type === "error" ? "bg-rose-600 text-white font-bold" : "bg-slate-800 text-slate-200 border border-slate-700";
-
-            toast.className = `px-4 py-2.5 rounded-xl text-xs shadow-xl transition-all duration-300 flex items-center gap-2 pointer-events-auto ${bgClass}`;
-            toast.innerHTML = `<span>${message}</span>`;
-
-            container.appendChild(toast);
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-2');
-                setTimeout(() => toast.remove(), 300);
-            }, 2500);
-        }
-
-        function resetAllProgress() {
-            appState.revisedChapterIds.clear();
-            saveProgressToStorage();
-            updateGlobalProgressUI();
-            renderChaptersGrid();
-            showToast("All progress reset", "info");
-        }
-
-        function exportStudyPlanner() {
-            const revised = Array.from(appState.revisedChapterIds).map(id => {
-                const c = CHAPTERS_DATA.find(ch => ch.id === id);
-                return `${c ? c.code : id}: ${c ? c.title : ''} (${c ? c.subject : ''})`;
-            });
-
-            const content = `ExamForge ISC Class 12 Progress Report\nDate: ${new Date().toLocaleDateString()}\nTotal Chapters: ${CHAPTERS_DATA.length}\nCompleted: ${revised.length}\n\nRevised Chapters:\n${revised.join('\n') || 'None'}`;
-            
-            const blob = new Blob([content], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = `ExamForge_ISC12_Progress.txt`;
-            a.click();
-            URL.revokeObjectURL(url);
-            showToast("Progress report downloaded", "success");
-        }
-
-        function toggleMobileStats() {
-            const stats = document.getElementById('globalStatsBar');
-            if (stats) stats.classList.toggle('hidden');
-        }
-
-        // BIND EVENT LISTENERS AUTOMATICALLY ON PAGE LOAD
-        document.addEventListener('DOMContentLoaded', initApp);
+        function resetAllProgress() { revisedSet.clear(); saveRevisedState(); updateGlobalStats(); filterChapters(); showToast('Progress reset'); }
+        function exportStudyPlanner() { const b = new Blob([CHAPTERS.map((c) => `${revisedSet.has(c.id) ? '[REVISED]' : '[PENDING]'} ${c.id} | ${c.subject} | ${c.title}`).join('\n')], { type: 'text/plain' }); const u = URL.createObjectURL(b), a = document.createElement('a'); a.href = u; a.download = 'ExamForge_ISC12_Progress.txt'; a.click(); URL.revokeObjectURL(u); }
+        function toggleMobileStats() { document.getElementById('globalStatsBar')?.classList.toggle('hidden'); }
+        document.addEventListener('DOMContentLoaded', () => { loadRevisedState(); renderSubjectTabs(); updateGlobalStats(); filterChapters(); });
     </script>
-
-    <script src="visual-mindmap.js" defer></script>
-
-</body>
+    </body>
 </html>
-```
