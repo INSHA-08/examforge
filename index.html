@@ -183,8 +183,8 @@
                         <button onclick="toggleAllSolutions('expected')" class="text-emerald-400 font-semibold cursor-pointer">Toggle All Answers</button>
                     </div>
                     <div id="expectedQuestionsContainer" class="space-y-4"></div>
-                    </div>
-                                    <div id="tabContent-visualmap" class="modal-pane hidden space-y-4">
+                </div>
+                <div id="tabContent-visualmap" class="modal-pane hidden space-y-4">
                     <div id="visualMindMapContainer"></div>
                 </div>
                 <div id="tabContent-aiexpand" class="modal-pane hidden space-y-4">
@@ -202,7 +202,8 @@
     </div>
     <script>
         const STORAGE_KEY = 'examforge_isc12_revised_v1';
-        const AI_BACKEND_URL = 'https://YOUR-DEPLOYED-BACKEND-URL.com/api/expand-note';
+        const BACKEND_BASE_URL = 'https://examforge-backend-syxf.onrender.com';
+        const AI_BACKEND_URL = `${BACKEND_BASE_URL}/api/expand-note`;
         const SUBJECTS = ['All Subjects', 'Physics', 'Chemistry', 'Biology', 'Computer Science', 'English Literature', 'Mathematics', 'Commerce', 'Accounts'];
         const CHAPTER_SEED = [
             ['PHY-01', 'Physics', 'Electric Charges and Fields'], ['PHY-02', 'Physics', 'Electrostatic Potential and Capacitance'],
@@ -260,8 +261,8 @@
                 ans: `State the rule/concept of "${title}" clearly, write step-wise reasoning/formula, and give the final result.`
             })),
             expected: Array.from({ length: 15 }, (_, i) => ({
-                q: `Expected Q #${i + 1} (${id}): Structured board question on "${title}".`,
-                ans: `Apply "${title}" principles systematically with exact ISC board keywords.`
+                q: `Expected Q #${i + 1} (${id}): Analyze a high-weightage exam point from "${title}".`,
+                ans: `Break down key definitions, structured points, and exact board keywords for "${title}".`
             }))
         }));
         let activeSubject = 'All Subjects', activeChapterId = null, revisedSet = new Set();
@@ -299,7 +300,7 @@
             document.getElementById('modalChapterTitle').textContent = `${ch.id}: ${ch.title}`;
             syncModalReviseButton();
             document.getElementById('mindmapNodesGrid').innerHTML = ch.mindMap.map((n) => `<div class="bg-slate-850/90 border border-slate-800 rounded-xl p-4"><div class="flex items-center gap-2 mb-2"><span class="w-6 h-6 rounded-md bg-emerald-500/15 text-emerald-400 text-xs font-bold flex items-center justify-center">${escapeHtml(n.step)}</span><h5 class="text-sm font-bold text-white">${escapeHtml(n.heading)}</h5></div><ul class="space-y-1 text-xs text-slate-300 list-disc pl-5">${n.points.map((p) => `<li>${escapeHtml(p)}</li>`).join('')}</ul></div>`).join('');
-            const mkQ = (items) => items.map((it) => `<div class="bg-slate-850/80 border border-slate-800 rounded-xl p-4 space-y-2"><p class="text-xs sm:text-sm font-semibold text-white">${escapeHtml(it.q)}</p><button type="button" onclick="toggleSingleAnswer(this)" class="text-[11px] font-semibold text-emerald-400 cursor-pointer">Show Marking Scheme Answer</button><div class="ef-answer-box hidden text-xs text-slate-300 bg-slate-900 rounded-lg p-3">${escapeHtml(it.ans)}</div></div>`).join('');
+            const mkQ = (items) => (items || []).map((it) => `<div class="bg-slate-850/80 border border-slate-800 rounded-xl p-4 space-y-2"><p class="text-xs sm:text-sm font-semibold text-white">${escapeHtml(it.q)}</p><button type="button" onclick="toggleSingleAnswer(this)" class="text-[11px] font-semibold text-emerald-400 cursor-pointer">Show Marking Scheme Answer</button><div class="ef-answer-box hidden text-xs text-slate-300 bg-slate-900 rounded-lg p-3">${escapeHtml(it.ans)}</div></div>`).join('');
             document.getElementById('pyqQuestionsContainer').innerHTML = mkQ(ch.pyqs);
             document.getElementById('expectedQuestionsContainer').innerHTML = mkQ(ch.expected);
             document.getElementById('studyModal').classList.remove('hidden');
@@ -327,7 +328,7 @@
             if (tab === 'visualmap') renderChapterVisualMindMap();
             if (tab === 'aiexpand') loadAiExpandedNote(false);
         }
-        function renderChapterVisualMindMap() {
+         function renderChapterVisualMindMap() {
             const c = document.getElementById('visualMindMapContainer'); if (!c) return;
             const ch = CHAPTERS.find((x) => x.id === activeChapterId);
             const title = ch ? `${ch.id}: ${ch.title}` : 'Chapter Mind Map', subj = ch ? ch.subject : 'ISC Class 12';
@@ -350,14 +351,23 @@
             const ch = CHAPTERS.find((x) => x.id === activeChapterId); if (!ch) return;
             const key = `examforge_ai_note_v1_${ch.id}`;
             if (!force && localStorage.getItem(key)) { out.textContent = localStorage.getItem(key); return; }
-            if (!AI_BACKEND_URL || AI_BACKEND_URL.includes('YOUR-DEPLOYED-BACKEND-URL')) { out.innerHTML = '<span class="text-amber-300">Set <code>AI_BACKEND_URL</code> to your deployed backend URL first.</span>'; return; }
-            out.innerHTML = `<span class="text-purple-300">Generating explanation for ${escapeHtml(ch.title)}...</span>`;
+            out.innerHTML = `<span class="text-purple-300">Generating explanation for ${escapeHtml(ch.title)}... (Free Render server may take 30–60s on first wake-up)</span>`;
             try {
-                const res = await fetch(AI_BACKEND_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ subject: ch.subject, chapterTitle: `${ch.id}: ${ch.title}` }) });
-                const data = await res.json().catch(() => ({}));
-                if (!res.ok || !data.explanation) throw new Error(data.error || `Error ${res.status}`);
-                localStorage.setItem(key, data.explanation);
-                out.textContent = data.explanation;
+                const res = await fetch(AI_BACKEND_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subject: ch.subject,
+                        chapterId: ch.id,
+                        chapterTitle: `${ch.id}: ${ch.title}`
+                    })
+                });
+                const ct = res.headers.get('content-type') || '';
+                const data = ct.includes('application/json') ? await res.json().catch(() => ({})) : { explanation: await res.text() };
+                const text = data.explanation || data.expandedNote || data.reply || data.response || data.output || data.text || '';
+                if (!res.ok || !text) throw new Error(data.error || data.message || `Error ${res.status}`);
+                localStorage.setItem(key, text);
+                out.textContent = text;
             } catch (e) {
                 out.innerHTML = `<span class="text-rose-400">Error: ${escapeHtml(e.message)}</span>`;
             }
@@ -367,5 +377,5 @@
         function toggleMobileStats() { document.getElementById('globalStatsBar')?.classList.toggle('hidden'); }
         document.addEventListener('DOMContentLoaded', () => { loadRevisedState(); renderSubjectTabs(); updateGlobalStats(); filterChapters(); });
     </script>
-    </body>
+</body>
 </html>
